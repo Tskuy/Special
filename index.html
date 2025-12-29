@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Giveaway Spinner — Multi Cycle + Registrasi + Claim WA</title>
+<style>
+:root{
+  --blue:#2563eb;
+  --blue-soft:#60a5fa;
+  --green:#16a34a;
+  --gold:#eab308;
+  --pink:#ec4899;
+  --border:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
+  --bg:#ffffff;
+  --radius:18px;
+  --shadow:0 18px 45px rgba(15,23,42,.12);
+  --maxw:720px;
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+html{height:100%;}
+
+/* Body + background (terang) */
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 0% 0%, #f9731622, transparent 55%),
+    radial-gradient(circle at 100% 0%, #22c55e22, transparent 55%),
+    radial-gradient(circle at 50% 120%, #38bdf822, transparent 55%),
+    linear-gradient(180deg,#fefce8,#f9fafb);
+  background-attachment:fixed;
+  background-size:200% 200%;
+  animation:bgFloat 26s ease-in-out infinite alternate;
+  min-height:100vh;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:20px 12px 32px;
+  overflow-x:hidden;
+}
+
+@keyframes bgFloat{
+  0%{background-position:0% 0%;}
+  100%{background-position:100% 100%;}
+}
+
+/* Partikel konfeti lembut */
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  inset:-120px;
+  pointer-events:none;
+  mix-blend-mode:screen;
+  opacity:.7;
+}
+body::before{
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(248,250,252,.9) 0, transparent 45%),
+    radial-gradient(circle at 85% 12%, rgba(254,240,138,.7) 0, transparent 45%),
+    radial-gradient(circle at 15% 90%, rgba(129,230,217,.6) 0, transparent 45%),
+    radial-gradient(circle at 88% 82%, rgba(191,219,254,.6) 0, transparent 45%);
+  animation:mistDrift1 34s linear infinite alternate;
+}
+body::after{
+  background-image:
+    radial-gradient(circle at 30% 5%, rgba(249,168,212,.6) 0, transparent 50%),
+    radial-gradient(circle at 70% 100%, rgba(96,165,250,.5) 0, transparent 50%);
+  animation:mistDrift2 28s linear infinite alternate;
+}
+
+@keyframes mistDrift1{
+  0%{transform:translate3d(0,0,0);}
+  100%{transform:translate3d(18px,-14px,0);}
+}
+@keyframes mistDrift2{
+  0%{transform:translate3d(0,0,0);}
+  100%{transform:translate3d(-14px,12px,0);}
+}
+
+/* Layer gelombang air di bawah */
+.wave-layer{
+  position:fixed;
+  left:50%;
+  bottom:-40px;
+  transform:translateX(-50%);
+  width:160%;
+  height:200px;
+  pointer-events:none;
+  z-index:0;
+}
+
+.wave-layer::before,
+.wave-layer::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:45% 55% 0 0;
+  background:radial-gradient(circle at 50% 0%, #e0f2fe 0, #bfdbfe 40%, #bfdbfe 60%, transparent 75%);
+  opacity:.85;
+  animation:waveMove1 12s ease-in-out infinite alternate;
+}
+
+/* Gelombang kedua (lebih kecil & sedikit hijau) */
+.wave-layer::after{
+  inset:20px 10%;
+  border-radius:55% 45% 0 0;
+  background:radial-gradient(circle at 50% 0%, #dcfce7 0, #bbf7d0 40%, #a7f3d0 60%, transparent 80%);
+  opacity:.9;
+  animation:waveMove2 16s ease-in-out infinite alternate;
+}
+
+@keyframes waveMove1{
+  0%{transform:translateX(-10px) translateY(0) scaleX(1);}
+  50%{transform:translateX(8px) translateY(-4px) scaleX(1.03);}
+  100%{transform:translateX(14px) translateY(2px) scaleX(1.05);}
+}
+@keyframes waveMove2{
+  0%{transform:translateX(10px) translateY(0) scaleX(1);}
+  50%{transform:translateX(-6px) translateY(-6px) scaleX(1.02);}
+  100%{transform:translateX(-14px) translateY(3px) scaleX(1.04);}
+}
+
+/* Wrapper & card */
+.wrap{
+  max-width:var(--maxw);
+  width:90%;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+
+.card{
+  position:relative;
+  background:linear-gradient(145deg,#ffffff,#f9fafb);
+  border-radius:24px;
+  padding:22px 18px 20px;
+  border:1px solid rgba(209,213,219,.9);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+/* Border glow lembut */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:inherit;
+  padding:1px;
+  background:conic-gradient(
+    from 120deg,
+    rgba(59,130,246,.3),
+    rgba(16,185,129,.35),
+    rgba(234,179,8,.35),
+    rgba(244,114,182,.35),
+    rgba(59,130,246,.3)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  opacity:.7;
+  animation:borderSpin 26s linear infinite;
+  pointer-events:none;
+}
+@keyframes borderSpin{
+  to{transform:rotate(360deg);}
+}
+.card::after{
+  content:"";
+  position:absolute;
+  inset:8px; /* sedikit lebih ke dalam dari ::before */
+  border-radius:inherit;
+  padding:1px;
+  background:conic-gradient(
+    from 0deg,
+    rgba(244,114,182,.4),
+    rgba(59,130,246,.35),
+    rgba(34,197,94,.35),
+    rgba(234,179,8,.4),
+    rgba(244,114,182,.4)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  opacity:.6;
+  pointer-events:none;
+  animation:borderSpinReverse 20s linear infinite;
+}
+
+@keyframes borderSpinReverse{
+  to{ transform:rotate(-360deg); } /* kebalikan arah yg borderSpin */
+}
+
+/* Topbar */
+.topbar{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+
+.title{
+  font-weight:900;
+  font-size:22px;
+  letter-spacing:.03em;
+  color:#111827;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.title::before{
+  content:"🎁";
+  font-size:22px;
+}
+
+.status{
+  font-size:13px;
+  color:var(--muted);
+  padding:6px 10px;
+  border-radius:999px;
+  background:linear-gradient(120deg,#e5f3ff,#f9fafb);
+  border:1px solid rgba(148,163,184,.7);
+}
+
+/* Ads / banner */
+.ad{
+  position:relative;
+  z-index:1;
+  text-align:center;
+  margin:12px 0;
+}
+.ad img{
+  max-width:100%;
+  height:auto;
+  border-radius:18px;
+  border:1px solid rgba(209,213,219,.95);
+  box-shadow:0 14px 32px rgba(148,163,184,.65);
+  transform-origin:center;
+  transition:transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+.ad img:hover{
+  transform:translateY(-2px) scale(1.01);
+  box-shadow:0 18px 44px rgba(148,163,184,.8);
+  filter:brightness(1.02);
+}
+
+/* Ribbon di bawah banner atas */
+.ad:first-of-type::after{
+  content:"EVENT HADIAH SPESIAL";
+  position:absolute;
+  left:50%;
+  bottom:-9px;
+  transform:translateX(-50%);
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#111827;
+  background:linear-gradient(120deg,#f97316,#facc15,#4ade80);
+  box-shadow:0 4px 18px rgba(148,163,184,.7);
+}
+
+/* Board */
+.board{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin:18px 0 14px;
+  padding:10px;
+  border-radius:20px;
+  background:radial-gradient(circle at 50% 0%,#eef2ff,transparent 70%);
+  box-shadow:inset 0 0 0 1px rgba(209,213,219,.9);
+}
+
+/* Soft inner gradient */
+.board::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(59,130,246,.12),transparent 55%),
+    radial-gradient(circle at 90% 100%,rgba(34,197,94,.14),transparent 55%);
+  opacity:.9;
+  pointer-events:none;
+}
+
+/* Slot hadiah */
+.slot{
+  position:relative;
+  padding:16px 10px;
+  border-radius:14px;
+  border:1px solid rgba(209,213,219,.95);
+  background:linear-gradient(145deg,#ffffff,#f3f4ff);
+  color:#1f2933;
+  text-align:center;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  user-select:none;
+  box-shadow:0 10px 24px rgba(148,163,184,.6);
+  transition:
+    transform .12s ease,
+    background .12s ease,
+    box-shadow .12s ease,
+    color .12s ease,
+    border-color .12s ease;
+  overflow:hidden;
+}
+
+/* nama produk & info */
+.prod-name{
+  display:block;
+  font-weight:800;
+}
+.prod-info{
+  display:block;
+  margin-top:3px;
+  font-weight:500;
+  color:#4b5563;
+}
+
+/* small (persentase) disembunyikan */
+.slot small{display:none}
+
+/* highlight saat hover */
+.slot:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(148,163,184,.9);
+  border-color:#bfdbfe;
+}
+
+/* state aktif saat spin */
+.slot.active{
+  background:radial-gradient(circle at 10% 0%,#e0f2fe,#eff6ff);
+  color:#1e293b;
+  transform:translateY(-1px) scale(1.02);
+  box-shadow:0 16px 40px rgba(59,130,246,.5);
+  border-color:#60a5fa;
+}
+
+/* pemenang */
+.slot.winner{
+  background:radial-gradient(circle at 20% 0%,#fef3c7,#bbf7d0);
+  color:#1f2937;
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:0 18px 48px rgba(250,204,21,.65);
+  border-color:#facc15;
+}
+.slot.winner::after{
+  content:"★";
+  position:absolute;
+  top:6px;
+  right:8px;
+  font-size:18px;
+  color:#f59e0b;
+  text-shadow:0 0 8px rgba(250,204,21,.9);
+}
+
+/* Actions & START button */
+.actions{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:4px 0 2px;
+}
+
+.btn{
+  position:relative;
+  padding:13px 26px;
+  border-radius:999px;
+  border:0;
+  cursor:pointer;
+  font-weight:900;
+  font-size:15px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#f9fafb;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  box-shadow:0 18px 40px rgba(34,197,94,.55);
+  transform:translateY(0);
+  transition:
+    transform .12s ease,
+    box-shadow .12s ease,
+    filter .12s ease;
+  overflow:hidden;
+}
+.btn::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:linear-gradient(120deg,rgba(255,255,255,.6),transparent 60%);
+  transform:translateX(-80%);
+  opacity:0;
+}
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 22px 55px rgba(34,197,94,.7);
+  filter:brightness(1.04);
+}
+.btn:hover::before{
+  opacity:1;
+  animation:btnShine .6s ease-out forwards;
+}
+.btn:active{
+  transform:translateY(0);
+  box-shadow:0 12px 28px rgba(22,163,74,.7);
+}
+.btn[disabled]{
+  opacity:.7;
+  cursor:not-allowed;
+  filter:grayscale(.05) brightness(.96);
+  box-shadow:0 10px 24px rgba(148,163,184,.8);
+}
+@keyframes btnShine{
+  0%{transform:translateX(-80%);}
+  100%{transform:translateX(40%);}
+}
+
+.note{
+  margin-top:10px;
+  font-size:11px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* Popup Claim (lebih terang) */
+#claimOverlay{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at 20% 0%,rgba(254,240,138,.6),transparent 60%),rgba(249,250,251,.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  padding:16px;
+  backdrop-filter:blur(8px);
+}
+
+#claimBox{
+  width:min(92vw,520px);
+  background:linear-gradient(145deg,#ffffff,#fefce8);
+  border-radius:22px;
+  border:1px solid rgba(250,204,21,.7);
+  box-shadow:0 22px 50px rgba(234,179,8,.45);
+  overflow:hidden;
+  position:relative;
+}
+#claimBox::before{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(253,244,215,.9) 0, transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(254,215,170,.9) 0, transparent 45%),
+    radial-gradient(circle at 5% 90%, rgba(209,250,229,.9) 0, transparent 45%),
+    radial-gradient(circle at 95% 80%, rgba(219,234,254,.9) 0, transparent 45%);
+  opacity:.7;
+  pointer-events:none;
+}
+
+.claim-body{
+  position:relative;
+  z-index:1;
+  padding:18px 16px 16px;
+}
+
+.claim-title{
+  font-weight:900;
+  font-size:20px;
+  margin-bottom:8px;
+  color:#1f2933;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.claim-title::before{
+  content:"🎉";
+}
+
+.claim-text{
+  font-size:14px;
+  color:#374151;
+  margin-bottom:14px;
+  white-space:pre-line;
+}
+
+.claim-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.btn-claim{
+  padding:10px 18px;
+  border-radius:999px;
+  border:0;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  color:#052e16;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 14px 30px rgba(22,163,74,.6);
+  font-size:14px;
+}
+.btn-claim:hover{
+  filter:brightness(1.05);
+  transform:translateY(-1px);
+}
+.btn-claim:active{
+  transform:translateY(0);
+  box-shadow:0 8px 18px rgba(21,128,61,.75);
+}
+
+/* Popup Registrasi */
+#regOverlay{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at 80% 0%,rgba(129,140,248,.45),opacity 100%),rgba(255,255,255,.96);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:3000;
+  padding:16px;
+  backdrop-filter:blur(1.3px);
+}
+
+#regBox{
+  width:min(92vw,460px);
+  background:linear-gradient(145deg,#ffffff,#eff6ff);
+  border-radius:22px;
+  border:1px solid rgba(191,219,254,.9);
+  box-shadow:0 20px 45px rgba(148,163,184,.7);
+  overflow:hidden;
+  position:relative;
+}
+#regBox::before{
+  content:"";
+  position:absolute;
+  inset:-60px;
+  opacity:.5;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(219,234,254,.9) 0, transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(191,219,254,.9) 0, transparent 40%),
+    radial-gradient(circle at 5% 90%, rgba(209,250,229,.9) 0, transparent 40%);
+}
+
+.reg-body{
+  position:relative;
+  z-index:1;
+  padding:18px 16px 16px;
+}
+
+.reg-title{
+  font-weight:900;
+  font-size:18px;
+  margin-bottom:10px;
+  color:#111827;
+}
+
+.reg-text{
+  font-size:14px;
+  color:#374151;
+  margin-bottom:14px;
+}
+
+.reg-field{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+
+.reg-input{
+  flex:1 1 200px;
+  padding:10px 12px;
+  border:1px solid rgba(148,163,184,.9);
+  border-radius:999px;
+  font-size:14px;
+  background-color:#ffffff;
+  color:#111827;
+  outline:none;
+  transition:border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+.reg-input:focus{
+  border-color:#60a5fa;
+  box-shadow:0 0 0 1px rgba(37,99,235,.7),0 0 0 6px rgba(191,219,254,.9);
+  background-color:#f9fafb;
+}
+
+.reg-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:4px;
+}
+
+.btn-verify{
+  padding:10px 16px;
+  border-radius:999px;
+  border:0;
+  background:linear-gradient(135deg,#2563eb,#4f46e5);
+  color:#f9fafb;
+  font-weight:800;
+  cursor:pointer;
+  font-size:13px;
+  box-shadow:0 12px 26px rgba(37,99,235,.55);
+}
+.btn-verify:hover{filter:brightness(1.05);transform:translateY(-1px);}
+.btn-verify:active{transform:translateY(0);box-shadow:0 8px 18px rgba(30,64,175,.7);}
+
+.btn-contact{
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(148,163,184,.9);
+  background:#ffffff;
+  color:#111827;
+  font-weight:700;
+  cursor:pointer;
+  font-size:13px;
+}
+.btn-contact:hover{
+  background:#eff6ff;
+  border-color:#60a5fa;
+}
+
+.reg-error{
+  color:#dc2626;
+  font-size:13px;
+  margin-top:8px;
+  min-height:18px;
+}
+
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  15%{transform:translateX(-6px)}
+  35%{transform:translateX(6px)}
+  55%{transform:translateX(-4px)}
+  75%{transform:translateX(4px)}
+}
+.shake{animation:shake .35s linear}
+
+/* Audio badge */
+#audioBadge{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  z-index:10;
+  padding:8px 12px;
+  border:0;
+  border-radius:999px;
+  background:rgba(15,23,42,.9);
+  color:#f9fafb;
+  font:600 13px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  cursor:pointer;
+  display:none;
+  box-shadow:0 10px 26px rgba(15,23,42,.85);
+}
+
+/* Responsif */
+@media (max-width:640px){
+  .wrap{padding:0;}
+  .card{padding:18px 14px 16px;border-radius:20px;}
+  .board{margin:14px 0 10px;padding:8px;border-radius:18px;}
+  .slot{padding:12px 6px;font-size:11px;}
+  .title{font-size:20px;}
+}
+</style>
+</head>
+<body>
+
+<audio id="bgm" preload="auto" playsinline>
+  <source id="bgmSrc" src="" type="audio/mpeg">
+</audio>
+<button id="audioBadge" type="button">♪ Musik menyala</button>
+
+<!-- Gelombang air -->
+<div class="wave-layer"></div>
+
+<div id="regOverlay" role="dialog" aria-modal="true" aria-label="Registrasi Giveaway">
+  <div id="regBox">
+    <div class="reg-body">
+      <div class="reg-title">🔒 Registrasi Giveaway</div>
+      <div class="reg-text">
+        Masukan kode Registrasi Giveaway:<br>
+        <small style="color:#6b7280">Kode ini diperlukan untuk menutup popup.</small><br><br>
+        Jika tidak memilikinya, hubungi admin untuk mendapatkannya.
+      </div>
+      <div class="reg-field">
+        <input id="regInput" class="reg-input" type="password" inputmode="numeric" placeholder="Masukkan kode di sini">
+        <button id="regVerify" class="btn-verify">Verifikasi</button>
+      </div>
+      <div class="reg-actions">
+        <button id="regContact" class="btn-contact">Hubungi Admin</button>
+      </div>
+      <div id="regError" class="reg-error"></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="card" aria-hidden="true" id="mainCard">
+    <div class="topbar">
+      <div class="title">Giveaway Spinner</div>
+      <div id="gwStatus" class="status">Klik START untuk memulai</div>
+    </div>
+
+    <div class="ad">
+      <img src="https://hisoka.net/file/IMG-20250910-WA0124.jpg" alt="Banner Atas">
+    </div>
+
+    <div id="gwBoard" class="board"></div>
+
+    <div class="actions">
+      <button id="gwStart" class="btn">START</button>
+    </div>
+
+    <div class="ad">
+      <img src="https://hisoka.net/file/9_20251209_151249_0002.png" alt="Banner Bawah">
+    </div>
+
+    <div class="note">* Sistem diatur satu kali (best-effort). Hasil akan terkunci.</div>
+  </div>
+</div>
+
+<div id="claimOverlay" role="dialog" aria-modal="true" aria-label="Claim hadiah" style="display:none">
+  <div id="claimBox">
+    <div class="claim-body">
+      <div class="claim-title">Selamat!</div>
+      <div id="claimText" class="claim-text"></div>
+      <div class="claim-actions">
+        <button id="btnClaim" class="btn-claim">Claim</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  let CYCLE_ID = 12202599999;
+  try{
+    const sp = new URLSearchParams(location.search);
+    const ov = sp.get('cycle');
+    if (ov && /^\d+$/.test(ov)) CYCLE_ID = Number(ov);
+  }catch(e){}
+  const SUFFIX    = `_cycle_${CYCLE_ID}`;
+  const DB_NAME   = `gwDB${SUFFIX}`;
+  const CACHE_NAME= `gwCache${SUFFIX}`;
+
+  const BG_URL    = "https://hisoka.net/file/Coklat-Aesthetic-Photo-Collage-Instagram-Story_20241123_052643_0000.png";
+  const AUDIO_URL = "#";
+
+  const REG_CODE_MAP = {
+    1: '321',
+  };
+  const REG_CODE = REG_CODE_MAP[CYCLE_ID] || '321';
+
+  const REG_KEY     = `gw_reg_ok${SUFFIX}`;
+  const STORAGE_KEY = `gw_played${SUFFIX}`;
+  const STORAGE_VAL = 'played';
+  const RESULT_KEY  = `gw_result${SUFFIX}`;
+
+  const WA_NUMBER_E164 = '6283847540571';
+
+  const OPTIONS = [
+    {key:'CANVA <br> [7 Hari]',    pct:5},
+    {key:'CANVA <br> [15 Hari]',    pct:10},
+    {key:'CANVA <br> [1 Bulan]',    pct:40},
+    {key:'CANVA <br> [3 Bulan]',    pct: 0},
+    {key:'CANVA <br> [1 Tahun]',      pct:0},
+    {key:'CAPCUT <br> [7 Hari]', pct:35},
+    {key:'CAPCUT <br> [14 Hari]',  pct: 0},
+    {key:'CAPCUT <br> [21 Hari]',    pct:0},
+    {key:'CAPCUT <br> [1 Bulan]',  pct: 0},
+    {key:'CHATGPT <br> [7 Hari]',    pct:0},
+    {key:'CHATGPT <br> [1 Bulan]',   pct: 0},
+    {key:'SPOTIFY <br> [1 BULAN]',    pct:0},
+    {key:'SPOTIFY <br> [3 BULAN]',  pct: 0},
+    {key:'NETFLIX <br> [1U1P]',    pct:0},
+    {key:'NETFLIX <br> [2U1P]',    pct:0},
+    {key:'A.MUSIC <br> [1 BULAN]',  pct: 0},
+    {key:'A.MUSIC <br> [3 BULAN]',  pct: 0},
+    {key:'ZOOM <br> [7 Hari]',    pct:0},
+    {key:'ZOOM <br> [14 Hari]',     pct: 0},
+    {key:'DISNEY <br> [1 Bulan]',    pct:0},
+    {key:'VIDIO <br> [Sharing]',    pct:0},
+    {key:'VIDIO <br> [Private]',    pct:0},
+    {key:'VIU <br> [1 Bulan]',    pct:0},
+    {key:'VIU <br> [6 Bulan]',    pct:0},
+    {key:'VIU <br> [1 Tahun]',    pct:10},
+    {key:'DUOLINGO <br> [1 Bulan]',    pct:0},
+    {key:'YOUTUBE <br> [1 Bulan]',    pct:0},
+    {key:'YOUTUBE <br> [3 Bulan]',    pct:0},
+    {key:'WINK <br> [7 Hari]',    pct:0},
+    {key:'REMINI <br> [7 Hari]',    pct:0},
+  ];
+  const PCT_MAP = Object.fromEntries(OPTIONS.map(o=>[o.key,o.pct]));
+  const ALL_LIST = OPTIONS.map(o=>o.key);
+  const SPIN_DURATION_MS = 15000;
+
+  (function loadBg(){
+    if(!BG_URL) return;
+    const img = new Image();
+    img.onload = ()=>{ document.body.style.backgroundImage = `url('${BG_URL}')`; };
+    img.onerror = ()=>{};
+    img.src = BG_URL;
+  })();
+  (function setAudio(){
+    const s = document.getElementById('bgmSrc');
+    if (s) s.src = AUDIO_URL || '';
+  })();
+
+  const regOverlay = document.getElementById('regOverlay');
+  const regInput   = document.getElementById('regInput');
+  const regVerify  = document.getElementById('regVerify');
+  const regContact = document.getElementById('regContact');
+  const regError   = document.getElementById('regError');
+  const mainCard   = document.getElementById('mainCard');
+
+  const board    = document.getElementById('gwBoard');
+  const startBtn = document.getElementById('gwStart');
+  const statusEl = document.getElementById('gwStatus');
+
+  const claimOverlay = document.getElementById('claimOverlay');
+  const claimText    = document.getElementById('claimText');
+  const btnClaim     = document.getElementById('btnClaim');
+  const btnClose     = document.getElementById('btnClose');
+
+  const bgm          = document.getElementById('bgm');
+  const audioBadge   = document.getElementById('audioBadge');
+  let audioStarted   = false;
+
+  function startMusicOnce(){
+    if(audioStarted) return;
+    audioStarted = true;
+    try{ bgm.muted = false; bgm.loop = true; }catch(e){}
+    bgm.play().then(()=>{
+      audioBadge.textContent = '♪ Musik menyala';
+      audioBadge.style.display = 'inline-block';
+      setTimeout(()=>{ audioBadge.style.display='none'; }, 2500);
+    }).catch(()=>{});
+    document.removeEventListener('click', startMusicOnce, true);
+    window.removeEventListener('pointerdown', startMusicOnce);
+    window.removeEventListener('keydown', startMusicOnce);
+  }
+  document.addEventListener('click', startMusicOnce, true);
+  window.addEventListener('pointerdown', startMusicOnce, {passive:true, once:true});
+  window.addEventListener('keydown', startMusicOnce, {once:true});
+
+  /* render board + styling produk/info */
+  OPTIONS.forEach((opt)=>{
+    const el = document.createElement('div');
+    el.className = 'slot';
+    el.dataset.key = opt.key;
+
+    const parts = opt.key.split('<br>');
+    const brandRaw = (parts[0] || '').trim();
+    const infoRaw  = (parts[1] || '').trim();
+
+    const brandText = brandRaw.replace(/<\/?[^>]+>/g,'');
+    const infoText  = infoRaw || '';
+
+    el.innerHTML =
+      `<span class="prod-name">${brandText}</span>` +
+      (infoText ? `<span class="prod-info">${infoText}</span>` : '');
+
+    board.appendChild(el);
+  });
+  const slots = Array.from(board.querySelectorAll('.slot'));
+
+  function setCookie(name,value,days){
+    try{
+      const d=new Date(); d.setTime(d.getTime()+ (days*24*60*60*1000));
+      document.cookie = name+"="+(value||"")+"; expires="+d.toUTCString()+"; path=/; SameSite=Lax";
+    }catch{}
+  }
+  function getCookie(name){
+    try{
+      const nameEQ = name + "=";
+      const ca = document.cookie.split(';');
+      for(let i=0;i<ca.length;i++){
+        let c = ca[i]; while(c.charAt(0)==' ') c = c.substring(1,c.length);
+        if(c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+    }catch{}
+    return null;
+  }
+  function idbSet(dbName, store, key, val){
+    return new Promise((resolve)=>{
+      const req = indexedDB.open(dbName,1);
+      req.onupgradeneeded = e=>{
+        const db=e.target.result;
+        if(!db.objectStoreNames.contains(store)) db.createObjectStore(store);
+      };
+      req.onsuccess = ()=>{
+        const db=req.result;
+        const tx=db.transaction(store,'readwrite');
+        tx.objectStore(store).put(val, key);
+        tx.oncomplete=()=>{ db.close(); resolve(true); };
+        tx.onerror=()=>{ db.close(); resolve(false); };
+      };
+      req.onerror = ()=> resolve(false);
+    });
+  }
+  function idbGet(dbName, store, key){
+    return new Promise((resolve)=>{
+      const req = indexedDB.open(dbName,1);
+      req.onupgradeneeded = e=>{
+        const db=e.target.result;
+        if(!db.objectStoreNames.contains(store)) db.createObjectStore(store);
+      };
+      req.onsuccess = ()=>{
+        const db=req.result;
+        const tx=db.transaction(store,'readonly');
+        const g=tx.objectStore(store).get(key);
+        g.onsuccess=()=>{ const v=g.result; db.close(); resolve(v); };
+        g.onerror=()=>{ db.close(); resolve(null); };
+      };
+      req.onerror = ()=> resolve(null);
+    });
+  }
+  async function cacheSet(cacheName, key, val){
+    try{
+      const c = await caches.open(cacheName);
+      const resp = new Response(val, { headers: {'Content-Type':'text/plain'} });
+      await c.put(new Request(location.origin+'/__gwflag__/'+key), resp);
+      return true;
+    }catch{ return false; }
+  }
+  async function cacheHas(cacheName, key){
+    try{
+      const c = await caches.open(cacheName);
+      const m = await c.match(location.origin+'/__gwflag__/'+key);
+      return !!m;
+    }catch{ return false; }
+  }
+
+  async function markPlayed(resultKey){
+    try { localStorage.setItem(STORAGE_KEY, STORAGE_VAL); } catch(e){}
+    try { sessionStorage.setItem(STORAGE_KEY, STORAGE_VAL); } catch(e){}
+    try { setCookie(STORAGE_KEY, STORAGE_VAL, 3650); } catch(e){}
+    try { await idbSet(DB_NAME,'flags', STORAGE_KEY, STORAGE_VAL); } catch(e){}
+    try { await cacheSet(CACHE_NAME, STORAGE_KEY, STORAGE_VAL); } catch(e){}
+    try { localStorage.setItem(RESULT_KEY, resultKey); } catch(e){}
+    try { await idbSet(DB_NAME,'flags', RESULT_KEY, resultKey); } catch(e){}
+  }
+  async function alreadyPlayed(){
+    try{ if(localStorage.getItem(STORAGE_KEY)===STORAGE_VAL) return true; }catch(e){}
+    try{ if(sessionStorage.getItem(STORAGE_KEY)===STORAGE_VAL) return true; }catch(e){}
+    try{ if(getCookie(STORAGE_KEY)===STORAGE_VAL) return true; }catch(e){}
+    try{ if(await idbGet(DB_NAME,'flags', STORAGE_KEY)) return true; }catch(e){}
+    try{ if(await cacheHas(CACHE_NAME, STORAGE_KEY)) return true; }catch(e){}
+    return false;
+  }
+  async function getSavedResult(){
+    try{
+      let r = localStorage.getItem(RESULT_KEY);
+      if(r) return r;
+      r = await idbGet(DB_NAME,'flags', RESULT_KEY);
+      return r || null;
+    }catch(e){ return null; }
+  }
+
+  function waAdminLink(){
+    const msg = "Halo kak, saya ingin mendapatkan kode registrasi Giveaway. Boleh kah saya ikut event bulan ini?\nTerima kasih kak";
+    return 'https://api.whatsapp.com/send?phone=' + WA_NUMBER_E164 + '&text=' + encodeURIComponent(msg);
+  }
+  regContact.addEventListener('click', ()=>{ window.open(waAdminLink(), '_blank', 'noopener'); });
+
+  function setRegOK(){
+    try{ localStorage.setItem(REG_KEY, 'ok'); }catch(e){}
+    try{ sessionStorage.setItem(REG_KEY, 'ok'); }catch(e){}
+    try{ setCookie(REG_KEY, 'ok', 3650); }catch(e){}
+    regOverlay.style.display = 'none';
+    mainCard.removeAttribute('aria-hidden');
+    regError.textContent = '';
+  }
+  function isRegOK(){
+    try{ if(localStorage.getItem(REG_KEY)==='ok') return true; }catch(e){}
+    try{ if(sessionStorage.getItem(REG_KEY)==='ok') return true; }catch(e){}
+    try{ if(getCookie(REG_KEY)==='ok') return true; }catch(e){}
+    return false;
+  }
+  function verifyReg(){
+    const v = (regInput.value||'').trim();
+    if(v===REG_CODE){ setRegOK(); }
+    else{
+      regError.textContent = 'Kode salah. Silakan periksa kembali.';
+      const box = document.getElementById('regBox');
+      box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake');
+      regInput.focus(); regInput.select?.();
+    }
+  }
+  regVerify.addEventListener('click', verifyReg);
+  regInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ verifyReg(); } });
+
+  if(isRegOK()){
+    regOverlay.style.display = 'none';
+    mainCard.removeAttribute('aria-hidden');
+  }else{
+    regOverlay.style.display = 'flex';
+    mainCard.setAttribute('aria-hidden','true');
+    setTimeout(()=>{ regInput.focus(); }, 50);
+  }
+
+  function formatNowJakarta(){
+    try{
+      const now = new Date();
+      const d = new Intl.DateTimeFormat('id-ID', { timeZone:'Asia/Jakarta', day:'2-digit', month:'long', year:'numeric'}).format(now);
+      const t = new Intl.DateTimeFormat('id-ID', { timeZone:'Asia/Jakarta', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false }).format(now);
+      const tDots = t.replaceAll(':','.');
+      return `${d} pukul ${tDots} WIB`;
+    }catch{
+      const s = new Date().toLocaleString('id-ID');
+      return `${s} WIB`;
+    }
+  }
+
+  function cleanLabel(label){
+    return label.replace(/<br\s*\/?>/gi,' ').replace(/\s+/g,' ').trim();
+  }
+
+  function buildWaMessage(winnerKey){
+    const label = cleanLabel(winnerKey);
+    const pct   = PCT_MAP[winnerKey] ?? '?';
+    const idx   = ALL_LIST.indexOf(winnerKey) + 1;
+    const lines = [
+      `Halo kak, Yeaayyy aku dapat *Premium (${label})*. Ditunggu ya kak, Makasii >.<`,
+      `> ${label}.${idx}.${pct}.2025`,
+      `> Waktu: ${formatNowJakarta()}`
+    ];
+    return lines.join('\n');
+  }
+  function openWhatsAppWith(text){
+    const url = 'https://api.whatsapp.com/send?phone=' + WA_NUMBER_E164 + '&text=' + encodeURIComponent(text);
+    window.open(url, '_blank', 'noopener');
+  }
+
+  function pickWeighted(){
+    const total = OPTIONS.reduce((a,b)=>a+b.pct,0);
+    const r = Math.random()*total;
+    let acc=0;
+    for(const o of OPTIONS){
+      acc += o.pct;
+      if(r <= acc) return o.key;
+    }
+    const nonZero = OPTIONS.filter(o=>o.pct>0);
+    return (nonZero[0]?.key) || OPTIONS[0].key;
+  }
+  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+  function showClaimPopup(winnerKey){
+    const labelDisplay = cleanLabel(winnerKey);
+
+    claimText.textContent =
+`Kamu mendapatkan Premium (${labelDisplay}).
+Klik "Claim" untuk menerimanya.
+
+Rangkuman:
+  - Pilihan: ${labelDisplay}
+  - Waktu: ${formatNowJakarta()}
+  [!] JANGAN LUPA SCREENSHOT, NO SCREENSHOT = HANGUS!!`;
+
+    claimOverlay.style.display = 'flex';
+    const msg = buildWaMessage(winnerKey);
+
+    btnClaim.onclick = () => openWhatsAppWith(msg);
+    if(btnClose){
+      btnClose.onclick = () => { claimOverlay.style.display = 'none'; };
+    }
+    claimOverlay.addEventListener('click', (e)=>{
+      if(e.target === claimOverlay) claimOverlay.style.display = 'none';
+    }, { once:true });
+  }
+
+  async function lockForever(winner){
+    await markPlayed(winner);
+    startBtn.disabled = true;
+  }
+
+  function spinOnce(){
+    startMusicOnce();
+    startBtn.disabled = true;
+    startBtn.textContent = 'Spinning...';
+
+    const winner = pickWeighted();
+    const targetIndex = OPTIONS.findIndex(o=>o.key===winner);
+    const len = OPTIONS.length;
+
+    const baseSpins = 8;
+    const totalSteps = baseSpins*len + targetIndex;
+
+    const start = performance.now();
+    let lastStep = -1;
+
+    function frame(now){
+      const t = Math.min(1, (now - start)/SPIN_DURATION_MS);
+      const eased = easeOutCubic(t);
+      const step = Math.floor(eased * totalSteps);
+
+      if(step !== lastStep){
+        slots.forEach(s=>s.classList.remove('active','winner'));
+        const idx = step % len;
+        slots[idx].classList.add('active');
+        lastStep = step;
+      }
+
+      if(t < 1){
+        requestAnimationFrame(frame);
+      } else {
+        slots.forEach(s=>s.classList.remove('active','winner'));
+        const finalEl = slots[targetIndex];
+        finalEl.classList.add('winner');
+        startBtn.textContent = 'Selesai';
+        statusEl.textContent = 'Hasil: ' + cleanLabel(winner);
+        lockForever(winner);
+        showClaimPopup(winner);
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  document.getElementById('gwStart').addEventListener('click', startMusicOnce, {once:true});
+
+  (async function initGame(){
+    if(await alreadyPlayed()){
+      startBtn.disabled = true;
+      startBtn.textContent = 'Sudah mengikuti';
+      const r = await getSavedResult();
+      statusEl.textContent = r ? ('Hasil: ' + cleanLabel(r)) : 'Sudah mengikuti';
+      if(r){
+        const idx = OPTIONS.findIndex(o=>o.key===r);
+        if(idx>=0){ slots[idx].classList.add('winner'); }
+      }
+    } else {
+      statusEl.textContent = 'Klik START untuk memutar';
+      startBtn.addEventListener('click', ()=>{ spinOnce(); }, { once:true });
+    }
+  })();
+})();
+</script>
+</body>
+</html>
