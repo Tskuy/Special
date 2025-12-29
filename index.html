@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Giveaway Spinner — Multi Cycle + Registrasi + Claim WA</title>
+<title>EVENT AKHIR TAHUN — FREE PREMIUM</title>
 <style>
 :root{
   --blue:#2563eb;
@@ -718,7 +718,7 @@ body::after{
 <div class="wrap">
   <div class="card" aria-hidden="true" id="mainCard">
     <div class="topbar">
-      <div class="title">Giveaway Spinner</div>
+      <div class="title">EVENT AKHIR TAHUN</div>
       <div id="gwStatus" class="status">Klik START untuk memulai</div>
     </div>
 
@@ -754,7 +754,7 @@ body::after{
 
 <script>
 (function(){
-  let CYCLE_ID = 12202599999;
+  let CYCLE_ID = 122025999998899;
   try{
     const sp = new URLSearchParams(location.search);
     const ov = sp.get('cycle');
@@ -768,9 +768,9 @@ body::after{
   const AUDIO_URL = "#";
 
   const REG_CODE_MAP = {
-    1: '321',
+    1: '2025',
   };
-  const REG_CODE = REG_CODE_MAP[CYCLE_ID] || '321';
+  const REG_CODE = REG_CODE_MAP[CYCLE_ID] || '2025';
 
   const REG_KEY     = `gw_reg_ok${SUFFIX}`;
   const STORAGE_KEY = `gw_played${SUFFIX}`;
@@ -780,40 +780,13 @@ body::after{
   const WA_NUMBER_E164 = '6283847540571';
 
   const OPTIONS = [
-    {key:'CANVA <br> [7 Hari]',    pct:5},
-    {key:'CANVA <br> [15 Hari]',    pct:10},
-    {key:'CANVA <br> [1 Bulan]',    pct:40},
-    {key:'CANVA <br> [3 Bulan]',    pct: 0},
-    {key:'CANVA <br> [1 Tahun]',      pct:0},
-    {key:'CAPCUT <br> [7 Hari]', pct:35},
-    {key:'CAPCUT <br> [14 Hari]',  pct: 0},
-    {key:'CAPCUT <br> [21 Hari]',    pct:0},
-    {key:'CAPCUT <br> [1 Bulan]',  pct: 0},
-    {key:'CHATGPT <br> [7 Hari]',    pct:0},
-    {key:'CHATGPT <br> [1 Bulan]',   pct: 0},
-    {key:'SPOTIFY <br> [1 BULAN]',    pct:0},
-    {key:'SPOTIFY <br> [3 BULAN]',  pct: 0},
-    {key:'NETFLIX <br> [1U1P]',    pct:0},
-    {key:'NETFLIX <br> [2U1P]',    pct:0},
-    {key:'A.MUSIC <br> [1 BULAN]',  pct: 0},
-    {key:'A.MUSIC <br> [3 BULAN]',  pct: 0},
-    {key:'ZOOM <br> [7 Hari]',    pct:0},
-    {key:'ZOOM <br> [14 Hari]',     pct: 0},
-    {key:'DISNEY <br> [1 Bulan]',    pct:0},
-    {key:'VIDIO <br> [Sharing]',    pct:0},
-    {key:'VIDIO <br> [Private]',    pct:0},
-    {key:'VIU <br> [1 Bulan]',    pct:0},
-    {key:'VIU <br> [6 Bulan]',    pct:0},
-    {key:'VIU <br> [1 Tahun]',    pct:10},
-    {key:'DUOLINGO <br> [1 Bulan]',    pct:0},
-    {key:'YOUTUBE <br> [1 Bulan]',    pct:0},
-    {key:'YOUTUBE <br> [3 Bulan]',    pct:0},
-    {key:'WINK <br> [7 Hari]',    pct:0},
-    {key:'REMINI <br> [7 Hari]',    pct:0},
+    {key:'CANVA <br> [PREMIUM]',    pct:5},
+    {key:'CHATGPT <br> [PLUS]',    pct:10},
+    {key:'CAPCUT <br> [PREMIUM]',    pct:40},
   ];
   const PCT_MAP = Object.fromEntries(OPTIONS.map(o=>[o.key,o.pct]));
   const ALL_LIST = OPTIONS.map(o=>o.key);
-  const SPIN_DURATION_MS = 15000;
+  const SPIN_DURATION_MS = 5000;
 
   (function loadBg(){
     if(!BG_URL) return;
