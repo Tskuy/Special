@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>JUMAT BERKAH — FREE PREMIUM</title>
+<title>SALAM PERKENALAN — FREE PREMIUM</title>
 <style>
 :root{
   --blue:#2563eb;
@@ -694,12 +694,12 @@ body::after{
 <!-- Gelombang air -->
 <div class="wave-layer"></div>
 
-<div id="regOverlay" role="dialog" aria-modal="true" aria-label="Registrasi Giveaway">
+<div id="regOverlay" role="dialog" aria-modal="true" aria-label="Registrasi Event Gratis">
   <div id="regBox">
     <div class="reg-body">
-      <div class="reg-title">🔒 Registrasi Giveaway</div>
+      <div class="reg-title">🔒 Registrasi Event Gratis</div>
       <div class="reg-text">
-        Masukan kode Registrasi Giveaway:<br>
+        Masukan kode Registrasinya:<br>
         <small style="color:#6b7280">Kode ini diperlukan untuk menutup popup.</small><br><br>
         Jika tidak memilikinya, hubungi admin untuk mendapatkannya.
       </div>
@@ -718,7 +718,7 @@ body::after{
 <div class="wrap">
   <div class="card" aria-hidden="true" id="mainCard">
     <div class="topbar">
-      <div class="title">JUMAT BERKAH</div>
+      <div class="title">SALAM PERKENALAN</div>
       <div id="gwStatus" class="status">Klik START untuk memulai</div>
     </div>
 
@@ -754,7 +754,7 @@ body::after{
 
 <script>
 (function(){
-  let CYCLE_ID = 210326;
+  let CYCLE_ID = 2104260;
   try{
     const sp = new URLSearchParams(location.search);
     const ov = sp.get('cycle');
@@ -768,9 +768,9 @@ body::after{
   const AUDIO_URL = "#";
 
   const REG_CODE_MAP = {
-    1: '030433',
+    1: '012349',
   };
-  const REG_CODE = REG_CODE_MAP[CYCLE_ID] || '030433';
+  const REG_CODE = REG_CODE_MAP[CYCLE_ID] || '012349';
 
   const REG_KEY     = `gw_reg_ok${SUFFIX}`;
   const STORAGE_KEY = `gw_played${SUFFIX}`;
@@ -780,26 +780,26 @@ body::after{
   const WA_NUMBER_E164 = '628971236843';
 
   const OPTIONS = [
-    {key:'CANVA <br> [1 Minggu]', pct:0},
-    {key:'CANVA <br> [1 Bulan]', pct:30},
-    {key:'CANVA <br> [1 Tahun]', pct:0},
-    {key:'CHATGPT <br> [1 Hari]', pct:0},
-    {key:'CHATGPT <br> [1 Minggu]', pct:0},
-    {key:'CHATGPT <br> [1 Bulan]', pct:0},
-    {key:'CAPCUT <br> [1 Hari]', pct:10},
-    {key:'CAPCUT <br> [1 Minggu]', pct:20},
-    {key:'CAPCUT <br> [1 Bulan]', pct:0},
-    {key:'SPOTIFY <br> [1 Bulan]', pct:0},
-    {key:'SPOTIFY <br> [2 Bulan]', pct:0},
-    {key:'SPOTIFY <br> [3 Bulan]', pct:0},
-    {key:'NETFLIX <br> [1 Hari]', pct:0},
-    {key:'NETFLIX <br> [1 Minggu]', pct:0},
-    {key:'NETFLIX <br> [1 Bulan]', pct:0},
-    {key:'VIU <br> [1 Bulan]', pct:30},
-    {key:'VIU <br> [6 Bulan]', pct:10},
-    {key:'VIU <br> [1 Tahun]', pct:0},
-    {key:'YOUTUBE <br> [1 Minggu]', pct:0},
     {key:'YOUTUBE <br> [1 Bulan]', pct:0},
+    {key:'CHATGPT <br> [1 Hari]', pct:0},
+    {key:'CANVA <br> [1 Minggu]', pct:0},
+    {key:'CAPCUT <br> [1 Hari]', pct:0},
+    {key:'CHATGPT <br> [1 Minggu]', pct:0},
+    {key:'NETFLIX <br> [1 Minggu]', pct:0},
+    {key:'SPOTIFY <br> [1 Bulan]', pct:0},
+    {key:'CAPCUT <br> [1 Bulan]', pct:0},
+    {key:'CANVA <br> [1 Bulan]', pct:100},
+    {key:'VIU <br> [6 Bulan]', pct:0},
+    {key:'NETFLIX <br> [1 Hari]', pct:0},
+    {key:'SPOTIFY <br> [3 Bulan]', pct:0},
+    {key:'CAPCUT <br> [1 Minggu]', pct:20},
+    {key:'VIU <br> [1 Bulan]', pct:0},
+    {key:'NETFLIX <br> [1 Bulan]', pct:0},
+    {key:'CHATGPT <br> [1 Bulan]', pct:0},
+    {key:'SPOTIFY <br> [2 Bulan]', pct:0},
+    {key:'YOUTUBE <br> [1 Minggu]', pct:0},
+    {key:'VIU <br> [1 Tahun]', pct:0},
+    {key:'CANVA <br> [1 Tahun]', pct:0},
     {key:'YOUTUBE <br> [3 Bulan]', pct:0},
   ];
   const PCT_MAP = Object.fromEntries(OPTIONS.map(o=>[o.key,o.pct]));
@@ -970,7 +970,7 @@ body::after{
   }
 
   function waAdminLink(){
-    const msg = "Halo kak, saya ingin mendapatkan kode registrasi Giveaway. Boleh kah saya ikut event bulan ini?\nTerima kasih kak";
+    const msg = "Halo kak, saya ingin mendapatkan kode registrasi event gratis. Boleh kah saya ikut event bulan ini?\nTerima kasih kak";
     return 'https://api.whatsapp.com/send?phone=' + WA_NUMBER_E164 + '&text=' + encodeURIComponent(msg);
   }
   regContact.addEventListener('click', ()=>{ window.open(waAdminLink(), '_blank', 'noopener'); });
