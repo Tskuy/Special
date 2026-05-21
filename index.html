@@ -970,7 +970,7 @@ body::after{
   }
 
   function waAdminLink(){
-    const msg = "Halo kak, saya ingin mendapatkan kode registrasi event gratis. Boleh kah saya ikut event bulan ini?\nTerima kasih kak";
+    const msg = "Halo kak, saya ingin mendapatkan kode registrasi event DAGKUN. Boleh kah saya ikut event GRATISNYA?\nTerima kasih kak";
     return 'https://api.whatsapp.com/send?phone=' + WA_NUMBER_E164 + '&text=' + encodeURIComponent(msg);
   }
   regContact.addEventListener('click', ()=>{ window.open(waAdminLink(), '_blank', 'noopener'); });
