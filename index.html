@@ -890,9 +890,6 @@
     <source src='https://github.com/Topupskuy/Topupskuy.github.io/raw/refs/heads/main/vidssave.com%20always%20with%20me%20~%20ghibli%20256KBPS.mp3' type='audio/mpeg'/>
     Your browser does not support the audio element.
   </audio>
-  <audio id="bgm" preload="auto" playsinline></audio>
-  <button id="audioBadge" type="button">♪ Musik menyala</button>
-  <div id="confettiLayer" aria-hidden="true"></div>
 
   <!-- POPUP REGISTRASI -->
   <div id="regOverlay" class="overlay show" role="dialog" aria-modal="true" aria-labelledby="regTitle">
@@ -1046,7 +1043,18 @@
        SISTEM — TIDAK PERLU DIUBAH
        ========================================================= */
 
-    function getCycleId(){
+      function playAudio() {
+            const audio = document.getElementById('audioPlayer');
+            audio.play();
+        }
+		
+		const audio = document.getElementById('audioPlayer');
+		audio.addEventListener('ended', function() {
+			audio.currentTime = 0; // Mengatur ulang posisi audio ke awal
+			audio.play(); // Memainkan kembali audio
+		});
+	  
+	  function getCycleId(){
       try{
         const params = new URLSearchParams(window.location.search);
         const override = params.get('cycle');
@@ -1178,18 +1186,6 @@
         request.onerror = function(){ resolve(null); };
       });
     }
-
-    function playAudio() {
-            const audio = document.getElementById('audioPlayer');
-            audio.play();
-        }
-		
-		const audio = document.getElementById('audioPlayer');
-		audio.addEventListener('ended', function() {
-			audio.currentTime = 0; // Mengatur ulang posisi audio ke awal
-			audio.play(); // Memainkan kembali audio
-		});
-
     function saveSimpleFlag(key,value){
       try{ localStorage.setItem(key,value); }catch(error){}
       try{ sessionStorage.setItem(key,value); }catch(error){}
