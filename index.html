@@ -71,7 +71,6 @@
         radial-gradient(circle at 86% 72%, rgba(5, 150, 105, .15) 0 2px, transparent 3px),
         radial-gradient(circle at 24% 82%, rgba(245, 158, 11, .20) 0 2px, transparent 3px);
       background-size:130px 130px,170px 170px,190px 190px,210px 210px;
-      /* Animasi diperlambat agar terasa lebih santai/lembut */
       animation:backgroundDrift 30s linear infinite; 
       opacity:.85;
     }
@@ -89,7 +88,6 @@
       background:
         radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.96) 0 30%, transparent 67%),
         linear-gradient(180deg, rgba(16, 185, 129, .12), rgba(16, 185, 129, .02));
-      /* Gerakan gelombang lebih lambat dan tenang */
       animation:waveFloat 12s ease-in-out infinite alternate;
     }
 
@@ -111,7 +109,6 @@
       z-index:1;
     }
 
-    /* Strip dekorasi diubah ke hijau & gold */
     .flag-strip{
       height:14px;
       margin-bottom:12px;
@@ -184,7 +181,6 @@
       box-shadow:0 20px 42px rgba(5, 150, 105, .25);
     }
 
-    /* Ubah angka 79 menjadi teks PROMO */
     .hero::before{
       content:"GIFT";
       position:absolute;
@@ -773,7 +769,7 @@
     .button-claim{
       border:0;
       color:#fff;
-      background:linear-gradient(135deg, #f59e0b, #d97706); /* Warna Emas untuk Claim */
+      background:linear-gradient(135deg, #f59e0b, #d97706);
       box-shadow:0 12px 26px rgba(217, 119, 6, .25);
     }
 
@@ -797,7 +793,6 @@
       80%{transform:translateX(5px)}
     }
 
-    /* Confetti Nuansa Hijau & Gold */
     #confettiLayer{
       position:fixed;
       inset:0;
@@ -992,13 +987,13 @@
     'use strict';
 
     /* =========================================================
-       KONFIGURASI — EDIT BAGIAN INI
+       KONFIGURASI
        ========================================================= */
 
-    // Merubah Cycle ID mereset sistem, sehingga buyer lama bisa ikut event baru
-    const DEFAULT_CYCLE_ID = 'WELCOME_SPIN_01';
+    const DEFAULT_CYCLE_ID = 'WELCOME_SPIN_0100';
 
     const VALID_REGISTRATION_CODES = [
+      'WELCOME26',
       'NEWBUYER'
     ];
 
@@ -1007,12 +1002,9 @@
     const BANNER_TOP_URL = 'https://raw.githubusercontent.com/Tskuy/Save/refs/heads/main/.github/workflows/headerskuy.png';
     const BANNER_BOTTOM_URL = 'https://raw.githubusercontent.com/Tskuy/Save/refs/heads/main/paket_hemat.jpg';
     
-    // CARA PASANG MUSIK GHIBLI:
-    // Upload file MP3 (misal: "stay_with_me.mp3") ke repository GitHub Anda (Tskuy/Save).
-    // Lalu ganti URL di bawah ini dengan URL "Raw" dari GitHub tersebut.
-    const AUDIO_URL = 'https://raw.githubusercontent.com/Tskuy/Save/refs/heads/main/stay_with_me_ghibli.mp3';
+    // URL AUDIO GHIBLI YG BARU (Akan otomatis main pada klik pertama di manapun)
+    const AUDIO_URL = 'https://github.com/Topupskuy/Topupskuy.github.io/raw/refs/heads/main/vidssave.com%20always%20with%20me%20~%20ghibli%20256KBPS.mp3';
 
-    // Bobot RNG. Biarkan langganan tahunan pct:0 sebagai display mewah
     const PRIZES = [
       { key:'YOUTUBE', info:'1 Bulan', pct:0 },
       { key:'VIU', info:'1 Tahun', pct:0 },
@@ -1044,7 +1036,7 @@
     ];
 
     /* =========================================================
-       SISTEM — TIDAK PERLU DIUBAH
+       SISTEM
        ========================================================= */
 
     function getCycleId(){
@@ -1052,9 +1044,7 @@
         const params = new URLSearchParams(window.location.search);
         const override = params.get('cycle');
         return override && override.trim() ? override.trim() : DEFAULT_CYCLE_ID;
-      }catch(error){
-        return DEFAULT_CYCLE_ID;
-      }
+      }catch(error){ return DEFAULT_CYCLE_ID; }
     }
 
     const CYCLE_ID = getCycleId();
@@ -1097,10 +1087,7 @@
     let audioStarted = false;
     let currentWinner = null;
 
-    function normalizeCode(value){
-      return String(value || '').trim().replace(/\s+/g,' ').toUpperCase();
-    }
-
+    function normalizeCode(value){ return String(value || '').trim().replace(/\s+/g,' ').toUpperCase(); }
     const NORMALIZED_VALID_CODES = VALID_REGISTRATION_CODES.map(normalizeCode);
 
     function prizeId(prize,index){ return [prize.key,prize.info,index].join('|'); }
@@ -1124,9 +1111,7 @@
         const parts = document.cookie.split(';');
         for(let i=0;i<parts.length;i++){
           const part = parts[i].trim();
-          if(part.indexOf(encodedName) === 0){
-            return decodeURIComponent(part.substring(encodedName.length));
-          }
+          if(part.indexOf(encodedName) === 0) return decodeURIComponent(part.substring(encodedName.length));
         }
       }catch(error){}
       return null;
@@ -1233,26 +1218,17 @@
     }
 
     function adminRegistrationLink(){
-      const message = [
-        'Halo Admin, saya pelanggan baru.',
-        'Boleh minta kode undangan untuk Welcome Spin?',
-        'Terima kasih kak.'
-      ].join('\n');
+      const message = 'Halo Admin, saya pelanggan baru.\nBoleh minta kode undangan untuk Welcome Spin?\nTerima kasih kak.';
       return 'https://api.whatsapp.com/send?phone=' + WHATSAPP_NUMBER + '&text=' + encodeURIComponent(message);
     }
 
     function setupRegistration(){
       regVerify.addEventListener('click',validateRegistration);
       regInput.addEventListener('keydown',function(event){
-        if(event.key === 'Enter'){
-          event.preventDefault();
-          validateRegistration();
-        }
+        if(event.key === 'Enter'){ event.preventDefault(); validateRegistration(); }
       });
       regInput.addEventListener('input',function(){ regError.textContent = ''; });
-      regContact.addEventListener('click',function(){
-        window.open(adminRegistrationLink(),'_blank','noopener,noreferrer');
-      });
+      regContact.addEventListener('click',function(){ window.open(adminRegistrationLink(),'_blank','noopener,noreferrer'); });
 
       if(readSimpleFlagSync(REGISTRATION_KEY) === 'ok'){
         unlockMainPage();
@@ -1265,19 +1241,9 @@
 
     function setupBanners(){
       function applyBanner(imageElement,fallbackElement,url){
-        if(!url){
-          imageElement.style.display = 'none';
-          fallbackElement.style.display = 'block';
-          return;
-        }
-        imageElement.onload = function(){
-          imageElement.style.display = 'block';
-          fallbackElement.style.display = 'none';
-        };
-        imageElement.onerror = function(){
-          imageElement.style.display = 'none';
-          fallbackElement.style.display = 'block';
-        };
+        if(!url){ imageElement.style.display = 'none'; fallbackElement.style.display = 'block'; return; }
+        imageElement.onload = function(){ imageElement.style.display = 'block'; fallbackElement.style.display = 'none'; };
+        imageElement.onerror = function(){ imageElement.style.display = 'none'; fallbackElement.style.display = 'block'; };
         imageElement.src = url;
       }
       applyBanner(bannerTop,bannerTopFallback,BANNER_TOP_URL);
@@ -1315,9 +1281,7 @@
       slots = Array.prototype.slice.call(board.querySelectorAll('.slot'));
     }
 
-    function clearSlotStates(){
-      slots.forEach(function(slot){ slot.classList.remove('active','winner'); });
-    }
+    function clearSlotStates(){ slots.forEach(function(slot){ slot.classList.remove('active','winner'); }); }
 
     function activateSlot(index){
       slots.forEach(function(slot){ slot.classList.remove('active'); });
@@ -1332,9 +1296,7 @@
     }
 
     function pickWeightedPrize(){
-      const eligible = PRIZES
-        .map(function(prize,index){ return { prize:prize,index:index,weight:Number(prize.pct) || 0 }; })
-        .filter(function(item){ return item.weight > 0; });
+      const eligible = PRIZES.map(function(prize,index){ return { prize:prize,index:index,weight:Number(prize.pct) || 0 }; }).filter(function(item){ return item.weight > 0; });
       if(!eligible.length){ return { prize:PRIZES[0],index:0 }; }
       const totalWeight = eligible.reduce(function(total,item){ return total + item.weight; },0);
       let random = Math.random() * totalWeight;
@@ -1345,26 +1307,34 @@
       return { prize:eligible[eligible.length - 1].prize,index:eligible[eligible.length - 1].index };
     }
 
-    function sleep(milliseconds){
-      return new Promise(function(resolve){ window.setTimeout(resolve,milliseconds); });
-    }
+    function sleep(milliseconds){ return new Promise(function(resolve){ window.setTimeout(resolve,milliseconds); }); }
 
     function easeInCubic(value){ return value * value * value; }
 
+    /* =================================================
+       PERBAIKAN ANIMASI (TIDAK STUCK & LEBIH CEPAT)
+       ================================================= */
     async function runSpinAnimation(targetIndex){
       const slotCount = slots.length;
       const startIndex = currentSlotIndex < 0 ? 0 : currentSlotIndex;
-      const fullRounds = 6;
+      
+      // PUTARAN DIKURANGI AGAR TIDAK KELAMAAN / TERASA NYANGKUT
+      const fullRounds = 3; 
+      
       const distanceToTarget = (targetIndex - startIndex + slotCount) % slotCount;
       const totalSteps = fullRounds * slotCount + distanceToTarget;
 
       for(let step=1;step<=totalSteps;step++){
         const progress = step / totalSteps;
-        const delay = 34 + Math.round(easeInCubic(progress) * 255);
+        
+        // DELAY DIOPTIMASI: Mulai dari sangat cepat (20ms) melambat halus maksimal ke 160ms.
+        // Sebelumnya mencapai hampir 300ms yang membuatnya terlihat patah/berhenti.
+        const delay = 20 + Math.round(easeInCubic(progress) * 140); 
+        
         const index = (startIndex + step) % slotCount;
-
         activateSlot(index);
-        if(progress > .78){
+
+        if(progress > .85){
           board.style.transform = step % 2 === 0 ? 'translateX(1px)' : 'translateX(-1px)';
         }
         await sleep(delay);
@@ -1373,17 +1343,31 @@
       markWinner(targetIndex);
     }
 
-    function startOptionalAudio(){
-      if(audioStarted || !AUDIO_URL) return;
-      audioStarted = true;
-      bgm.src = AUDIO_URL;
-      bgm.loop = true;
-      bgm.volume = .45; // Volume lebih lembut
-      bgm.play().then(function(){
-        audioBadge.style.display = 'block';
-        window.setTimeout(function(){ audioBadge.style.display = 'none'; },3000);
-      }).catch(function(){ audioStarted = false; });
+    /* =================================================
+       PERBAIKAN AUDIO (PLAY OTOMATIS SAAT KLIK PERTAMA)
+       ================================================= */
+    function triggerAudioOnInteraction() {
+      if (!audioStarted && AUDIO_URL) {
+        audioStarted = true;
+        bgm.src = AUDIO_URL;
+        bgm.loop = true;
+        bgm.volume = 0.45;
+        bgm.play().then(function() {
+          audioBadge.style.display = 'block';
+          window.setTimeout(function(){ audioBadge.style.display = 'none'; }, 3000);
+          // Hapus listener setelah sukses berjalan sekali
+          document.body.removeEventListener('click', triggerAudioOnInteraction);
+          document.body.removeEventListener('touchstart', triggerAudioOnInteraction);
+        }).catch(function() {
+          audioStarted = false; // Jika diblokir (jarang terjadi di klik), biarkan dicoba lagi
+        });
+      }
     }
+
+    // Pasang Global Listener ke body. Sentuhan pertama di area manapun akan memutar lagu.
+    document.body.addEventListener('click', triggerAudioOnInteraction);
+    document.body.addEventListener('touchstart', triggerAudioOnInteraction);
+
 
     function formatJakartaTime(){
       const now = new Date();
@@ -1417,7 +1401,7 @@
     }
 
     function launchConfetti(amount){
-      const colors = ['#10b981','#ffffff','#f59e0b','#34d399','#a7f3d0']; // Hijau & Emas
+      const colors = ['#10b981','#ffffff','#f59e0b','#34d399','#a7f3d0']; 
       const count = Math.max(20,Number(amount) || 70);
       for(let i=0;i<count;i++){
         const piece = document.createElement('span');
@@ -1452,7 +1436,10 @@
     async function spinOnce(){
       if(isSpinning) return;
       isSpinning = true;
-      startOptionalAudio();
+      
+      // Memicu audio jika entah bagaimana user belum klik apapun selain tombol ini
+      triggerAudioOnInteraction(); 
+      
       startButton.disabled = true;
       startButton.classList.add('is-spinning');
       startButton.textContent = 'MEMUTAR...';
