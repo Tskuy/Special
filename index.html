@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="theme-color" content="#b91c1c">
-  <title>Spin Hadiah Kemerdekaan</title>
+  <meta name="theme-color" content="#10b981">
+  <title>Welcome Spin - Spesial Pelanggan Baru</title>
 
   <style>
     :root{
-      --red:#dc2626;
-      --red-dark:#991b1b;
-      --red-deep:#7f1d1d;
-      --red-soft:#fee2e2;
-      --white:#ffffff;
-      --cream:#fffaf5;
-      --gold:#f59e0b;
-      --gold-soft:#fef3c7;
-      --green:#16a34a;
-      --ink:#111827;
-      --muted:#6b7280;
-      --line:rgba(153,27,27,.16);
-      --shadow:0 22px 55px rgba(127,29,29,.18);
-      --max-width:780px;
+      /* FRESH GREEN PALETTE */
+      --main: #10b981;       /* Emerald */
+      --main-dark: #059669;
+      --main-deep: #064e3b;
+      --main-soft: #d1fae5;
+      --white: #ffffff;
+      --cream: #f8fafc;
+      --gold: #f59e0b;
+      --gold-soft: #fef3c7;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: rgba(16, 185, 129, .16);
+      --shadow: 0 22px 55px rgba(6, 78, 59, .12);
+      --max-width: 780px;
     }
 
     *{
@@ -41,10 +41,10 @@
       color:var(--ink);
       font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
       background:
-        radial-gradient(circle at 5% 0%, rgba(220,38,38,.20), transparent 35%),
-        radial-gradient(circle at 95% 5%, rgba(245,158,11,.18), transparent 30%),
-        radial-gradient(circle at 50% 100%, rgba(220,38,38,.10), transparent 36%),
-        linear-gradient(180deg,#fff1f2 0%,#ffffff 43%,#fff7ed 100%);
+        radial-gradient(circle at 5% 0%, rgba(16, 185, 129, .15), transparent 35%),
+        radial-gradient(circle at 95% 5%, rgba(245, 158, 11, .12), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(16, 185, 129, .08), transparent 36%),
+        linear-gradient(180deg, #f0fdf4 0%, #ffffff 43%, #f8fafc 100%);
       background-attachment:fixed;
       padding:18px 12px 38px;
       position:relative;
@@ -67,12 +67,13 @@
       pointer-events:none;
       background:
         radial-gradient(circle at 15% 20%, rgba(255,255,255,.80) 0 2px, transparent 3px),
-        radial-gradient(circle at 74% 16%, rgba(245,158,11,.45) 0 2px, transparent 3px),
-        radial-gradient(circle at 86% 72%, rgba(220,38,38,.26) 0 2px, transparent 3px),
-        radial-gradient(circle at 24% 82%, rgba(245,158,11,.30) 0 2px, transparent 3px);
+        radial-gradient(circle at 74% 16%, rgba(16, 185, 129, .25) 0 2px, transparent 3px),
+        radial-gradient(circle at 86% 72%, rgba(5, 150, 105, .15) 0 2px, transparent 3px),
+        radial-gradient(circle at 24% 82%, rgba(245, 158, 11, .20) 0 2px, transparent 3px);
       background-size:130px 130px,170px 170px,190px 190px,210px 210px;
-      animation:backgroundDrift 24s linear infinite;
-      opacity:.75;
+      /* Animasi diperlambat agar terasa lebih santai/lembut */
+      animation:backgroundDrift 30s linear infinite; 
+      opacity:.85;
     }
 
     body::after{
@@ -87,8 +88,9 @@
       border-radius:50% 50% 0 0;
       background:
         radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.96) 0 30%, transparent 67%),
-        linear-gradient(180deg,rgba(220,38,38,.16),rgba(220,38,38,.03));
-      animation:waveFloat 8s ease-in-out infinite alternate;
+        linear-gradient(180deg, rgba(16, 185, 129, .12), rgba(16, 185, 129, .02));
+      /* Gerakan gelombang lebih lambat dan tenang */
+      animation:waveFloat 12s ease-in-out infinite alternate;
     }
 
     @keyframes backgroundDrift{
@@ -98,7 +100,7 @@
 
     @keyframes waveFloat{
       from{transform:translateY(0) scaleX(1)}
-      to{transform:translateY(-12px) scaleX(1.04)}
+      to{transform:translateY(-10px) scaleX(1.03)}
     }
 
     .page-shell{
@@ -109,6 +111,7 @@
       z-index:1;
     }
 
+    /* Strip dekorasi diubah ke hijau & gold */
     .flag-strip{
       height:14px;
       margin-bottom:12px;
@@ -116,12 +119,12 @@
       background:
         repeating-linear-gradient(
           90deg,
-          var(--red) 0 46px,
+          var(--main) 0 46px,
           #fff 46px 92px
         );
-      border:1px solid rgba(153,27,27,.12);
-      box-shadow:0 10px 22px rgba(127,29,29,.15);
-      animation:flagMove 5s linear infinite;
+      border:1px solid var(--line);
+      box-shadow:0 10px 22px rgba(6, 78, 59, .10);
+      animation:flagMove 6s linear infinite;
       background-size:184px 100%;
     }
 
@@ -134,8 +137,8 @@
       overflow:hidden;
       border-radius:30px;
       padding:18px;
-      background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(255,250,245,.96));
-      border:1px solid rgba(153,27,27,.16);
+      background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(240,253,244,.96));
+      border:1px solid var(--line);
       box-shadow:var(--shadow);
       isolation:isolate;
     }
@@ -149,18 +152,18 @@
       padding:1px;
       background:conic-gradient(
         from 0deg,
-        rgba(220,38,38,.70),
-        rgba(255,255,255,.85),
-        rgba(245,158,11,.72),
-        rgba(255,255,255,.85),
-        rgba(220,38,38,.70)
+        rgba(16, 185, 129, .70),
+        rgba(255,255,255,.95),
+        rgba(245, 158, 11, .72),
+        rgba(255,255,255,.95),
+        rgba(16, 185, 129, .70)
       );
       -webkit-mask:
         linear-gradient(#000 0 0) content-box,
         linear-gradient(#000 0 0);
       -webkit-mask-composite:xor;
-              mask-composite:exclude;
-      animation:borderRotate 20s linear infinite;
+          mask-composite:exclude;
+      animation:borderRotate 22s linear infinite;
       pointer-events:none;
     }
 
@@ -176,21 +179,22 @@
       color:#fff;
       background:
         radial-gradient(circle at 88% 12%,rgba(254,243,199,.24),transparent 28%),
-        radial-gradient(circle at 10% 90%,rgba(255,255,255,.13),transparent 30%),
-        linear-gradient(135deg,#ef4444 0%,#b91c1c 52%,#7f1d1d 100%);
-      box-shadow:0 20px 42px rgba(185,28,28,.28);
+        radial-gradient(circle at 10% 90%,rgba(255,255,255,.18),transparent 30%),
+        linear-gradient(135deg, #34d399 0%, #10b981 52%, #047857 100%);
+      box-shadow:0 20px 42px rgba(5, 150, 105, .25);
     }
 
+    /* Ubah angka 79 menjadi teks PROMO */
     .hero::before{
-      content:"79";
+      content:"GIFT";
       position:absolute;
-      right:-10px;
-      bottom:-34px;
-      font-size:148px;
+      right:-15px;
+      bottom:-30px;
+      font-size:110px;
       line-height:1;
       font-weight:1000;
-      letter-spacing:-.08em;
-      color:rgba(255,255,255,.08);
+      letter-spacing:-.05em;
+      color:rgba(255,255,255,.12);
       transform:rotate(-7deg);
       pointer-events:none;
     }
@@ -203,7 +207,7 @@
       bottom:-78px;
       height:112px;
       border-radius:50%;
-      background:rgba(255,255,255,.13);
+      background:rgba(255,255,255,.15);
       transform:rotate(-3deg);
       pointer-events:none;
     }
@@ -221,8 +225,8 @@
       font-weight:900;
       letter-spacing:.10em;
       text-transform:uppercase;
-      background:rgba(255,255,255,.15);
-      border:1px solid rgba(255,255,255,.25);
+      background:rgba(255,255,255,.20);
+      border:1px solid rgba(255,255,255,.35);
       backdrop-filter:blur(5px);
     }
 
@@ -234,7 +238,7 @@
       line-height:1.05;
       font-weight:1000;
       letter-spacing:-.03em;
-      text-shadow:0 4px 18px rgba(69,10,10,.20);
+      text-shadow:0 4px 18px rgba(6, 78, 59, .20);
     }
 
     .hero-subtitle{
@@ -244,7 +248,7 @@
       margin-top:9px;
       font-size:14px;
       line-height:1.55;
-      color:rgba(255,255,255,.92);
+      color:rgba(255,255,255,.95);
     }
 
     .hero-pills{
@@ -264,8 +268,8 @@
       padding:7px 11px;
       font-size:12px;
       font-weight:800;
-      background:rgba(255,255,255,.13);
-      border:1px solid rgba(255,255,255,.20);
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.25);
     }
 
     .topbar{
@@ -283,7 +287,7 @@
       gap:8px;
       font-size:21px;
       font-weight:1000;
-      color:#3f0a0a;
+      color:var(--main-deep);
     }
 
     .status-pill{
@@ -293,9 +297,9 @@
       font-size:12px;
       line-height:1.25;
       font-weight:800;
-      color:#991b1b;
-      background:#fff1f2;
-      border:1px solid rgba(220,38,38,.18);
+      color:var(--main-dark);
+      background:var(--main-soft);
+      border:1px solid rgba(16, 185, 129, .25);
     }
 
     .banner{
@@ -303,8 +307,8 @@
       width:100%;
       margin:12px 0;
       border-radius:20px;
-      border:1px solid rgba(153,27,27,.16);
-      box-shadow:0 14px 30px rgba(127,29,29,.14);
+      border:1px solid var(--line);
+      box-shadow:0 14px 30px rgba(6, 78, 59, .12);
       object-fit:cover;
     }
 
@@ -316,14 +320,14 @@
       padding:14px;
       text-align:center;
       background:
-        radial-gradient(circle at 10% 20%,rgba(255,255,255,.85),transparent 30%),
-        linear-gradient(135deg,#fff1f2,#ffffff 55%,#fff7ed);
-      border:1px solid rgba(220,38,38,.16);
+        radial-gradient(circle at 10% 20%,rgba(255,255,255,.90),transparent 30%),
+        linear-gradient(135deg, #d1fae5, #ffffff 55%, #fef3c7);
+      border:1px solid rgba(16, 185, 129, .20);
     }
 
     .built-in-banner strong{
       display:block;
-      color:#991b1b;
+      color:var(--main-dark);
       font-size:14px;
       letter-spacing:.08em;
       text-transform:uppercase;
@@ -332,7 +336,7 @@
     .built-in-banner span{
       display:block;
       margin-top:4px;
-      color:#6b7280;
+      color:var(--muted);
       font-size:12px;
       line-height:1.45;
     }
@@ -344,11 +348,11 @@
       padding:12px;
       border-radius:24px;
       background:
-        radial-gradient(circle at 15% 0%,rgba(220,38,38,.10),transparent 30%),
-        radial-gradient(circle at 100% 100%,rgba(245,158,11,.12),transparent 32%),
-        linear-gradient(180deg,#fff7f7,#fffdf8);
-      border:1px solid rgba(153,27,27,.14);
-      box-shadow:inset 0 0 0 1px rgba(255,255,255,.85);
+        radial-gradient(circle at 15% 0%,rgba(16, 185, 129, .08),transparent 30%),
+        radial-gradient(circle at 100% 100%,rgba(245, 158, 11, .10),transparent 32%),
+        linear-gradient(180deg,#f8fffa,#ffffff);
+      border:1px solid var(--line);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.90);
     }
 
     .board-shell::before{
@@ -356,11 +360,11 @@
       position:absolute;
       inset:0;
       pointer-events:none;
-      opacity:.22;
+      opacity:.25;
       background:
         repeating-linear-gradient(
           -45deg,
-          rgba(220,38,38,.08) 0 10px,
+          rgba(16, 185, 129, .06) 0 10px,
           transparent 10px 20px
         );
     }
@@ -381,13 +385,13 @@
       font-weight:1000;
       letter-spacing:.10em;
       text-transform:uppercase;
-      color:#991b1b;
+      color:var(--main-dark);
     }
 
     .board-info{
       font-size:11px;
       font-weight:700;
-      color:#6b7280;
+      color:var(--muted);
     }
 
     .board{
@@ -400,12 +404,12 @@
     }
 
     .board.is-spinning{
-      animation:boardBreath .8s ease-in-out infinite alternate;
+      animation:boardBreath 1.2s ease-in-out infinite alternate;
     }
 
     @keyframes boardBreath{
-      from{filter:drop-shadow(0 0 0 rgba(220,38,38,0))}
-      to{filter:drop-shadow(0 8px 18px rgba(220,38,38,.14))}
+      from{filter:drop-shadow(0 0 0 rgba(16, 185, 129,0))}
+      to{filter:drop-shadow(0 8px 18px rgba(16, 185, 129,.15))}
     }
 
     .slot{
@@ -422,9 +426,9 @@
       border-radius:16px;
       text-align:center;
       color:#1f2937;
-      background:linear-gradient(145deg,#ffffff,#fff6f6);
-      border:1px solid rgba(153,27,27,.14);
-      box-shadow:0 9px 22px rgba(69,10,10,.07);
+      background:linear-gradient(145deg,#ffffff,#f2fdf7);
+      border:1px solid rgba(16, 185, 129, .15);
+      box-shadow:0 9px 22px rgba(6, 78, 59, .05);
       transition:
         transform .14s ease,
         box-shadow .14s ease,
@@ -443,7 +447,7 @@
       bottom:0;
       height:5px;
       z-index:-1;
-      background:linear-gradient(90deg,#dc2626,#ffffff,#f59e0b);
+      background:linear-gradient(90deg, #10b981, #ffffff, #f59e0b);
       opacity:.76;
     }
 
@@ -452,7 +456,7 @@
       position:absolute;
       inset:-60%;
       z-index:-1;
-      background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.78) 48%,transparent 62%);
+      background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.85) 48%,transparent 62%);
       transform:translateX(-70%) rotate(8deg);
       opacity:0;
     }
@@ -460,11 +464,11 @@
     .slot.active{
       z-index:3;
       transform:translateY(-4px) scale(1.055) rotate(-.35deg);
-      background:radial-gradient(circle at 50% 0%,#ffffff,#fee2e2 72%);
-      border-color:#ef4444;
+      background:radial-gradient(circle at 50% 0%,#ffffff,#d1fae5 72%);
+      border-color:#34d399;
       box-shadow:
-        0 18px 38px rgba(220,38,38,.27),
-        0 0 0 3px rgba(254,202,202,.75);
+        0 18px 38px rgba(16, 185, 129, .25),
+        0 0 0 3px rgba(167, 243, 208, .60);
       filter:saturate(1.12);
       animation:slotActivePulse .28s ease-out;
     }
@@ -493,9 +497,9 @@
         radial-gradient(circle at 50% 0%,#ffffff 0%,#fef3c7 50%,#fff7ed 100%);
       border-color:#f59e0b;
       box-shadow:
-        0 22px 48px rgba(245,158,11,.35),
+        0 22px 48px rgba(245,158,11,.30),
         0 0 0 4px rgba(253,230,138,.72);
-      animation:winnerPulse 1s ease-in-out infinite alternate;
+      animation:winnerPulse 1.2s ease-in-out infinite alternate;
     }
 
     .slot.winner .winner-star{
@@ -515,7 +519,7 @@
       color:#f59e0b;
       font-size:18px;
       text-shadow:0 0 10px rgba(245,158,11,.85);
-      animation:starSpin 1.2s linear infinite;
+      animation:starSpin 1.5s linear infinite;
     }
 
     @keyframes starSpin{
@@ -536,7 +540,7 @@
       font-size:11px;
       line-height:1.25;
       font-weight:800;
-      color:#6b7280;
+      color:var(--muted);
     }
 
     .actions{
@@ -559,8 +563,8 @@
       font-weight:1000;
       letter-spacing:.16em;
       text-transform:uppercase;
-      background:linear-gradient(135deg,#ef4444,#b91c1c 60%,#7f1d1d);
-      box-shadow:0 18px 40px rgba(185,28,28,.34);
+      background:linear-gradient(135deg, #34d399, #10b981 60%, #047857);
+      box-shadow:0 18px 40px rgba(5, 150, 105, .30);
       transition:transform .15s ease,box-shadow .15s ease,filter .15s ease;
     }
 
@@ -570,12 +574,12 @@
       inset:-50%;
       background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.62) 48%,transparent 60%);
       transform:translateX(-75%) rotate(8deg);
-      animation:buttonShine 2.2s ease-in-out infinite;
+      animation:buttonShine 2.5s ease-in-out infinite;
     }
 
     .start-button:hover:not(:disabled){
       transform:translateY(-2px) scale(1.02);
-      box-shadow:0 23px 50px rgba(185,28,28,.40);
+      box-shadow:0 23px 50px rgba(5, 150, 105, .40);
       filter:brightness(1.04);
     }
 
@@ -591,7 +595,7 @@
     }
 
     .start-button.is-spinning{
-      animation:buttonBeat .6s ease-in-out infinite alternate;
+      animation:buttonBeat .8s ease-in-out infinite alternate;
     }
 
     @keyframes buttonShine{
@@ -601,19 +605,19 @@
 
     @keyframes buttonBeat{
       from{transform:scale(1)}
-      to{transform:scale(1.035)}
+      to{transform:scale(1.03)}
     }
 
     .event-note{
       text-align:center;
       font-size:11px;
       line-height:1.45;
-      color:#6b7280;
+      color:var(--muted);
       margin-top:8px;
     }
 
     .event-note strong{
-      color:#991b1b;
+      color:var(--main-dark);
     }
 
     /* Modal dasar */
@@ -626,19 +630,19 @@
       justify-content:center;
       padding:16px;
       background:
-        radial-gradient(circle at 20% 0%,rgba(220,38,38,.22),transparent 36%),
+        radial-gradient(circle at 20% 0%,rgba(16, 185, 129, .15),transparent 36%),
         rgba(255,255,255,.92);
       backdrop-filter:blur(7px);
     }
 
     .overlay.show{
       display:flex;
-      animation:overlayIn .22s ease-out;
+      animation:overlayIn .3s ease-out;
     }
 
     @keyframes overlayIn{
-      from{opacity:0}
-      to{opacity:1}
+      from{opacity:0; backdrop-filter:blur(0px)}
+      to{opacity:1; backdrop-filter:blur(7px)}
     }
 
     .modal{
@@ -647,10 +651,10 @@
       width:min(94vw,500px);
       border-radius:25px;
       padding:19px 17px 17px;
-      background:linear-gradient(145deg,#ffffff,#fff7f7);
-      border:1px solid rgba(153,27,27,.18);
-      box-shadow:0 28px 65px rgba(69,10,10,.22);
-      animation:modalIn .28s cubic-bezier(.2,.9,.25,1.15);
+      background:linear-gradient(145deg,#ffffff,#f2fdf7);
+      border:1px solid rgba(16, 185, 129, .20);
+      box-shadow:0 28px 65px rgba(6, 78, 59, .20);
+      animation:modalIn .4s cubic-bezier(.2,.9,.25,1.15);
     }
 
     .modal::before{
@@ -659,13 +663,13 @@
       inset:-70px;
       pointer-events:none;
       background:
-        radial-gradient(circle at 10% 10%,rgba(254,202,202,.36),transparent 34%),
+        radial-gradient(circle at 10% 10%,rgba(167, 243, 208, .40),transparent 34%),
         radial-gradient(circle at 90% 8%,rgba(253,230,138,.30),transparent 32%),
         radial-gradient(circle at 90% 90%,rgba(255,255,255,.75),transparent 34%);
     }
 
     @keyframes modalIn{
-      from{opacity:0;transform:translateY(14px) scale(.95)}
+      from{opacity:0;transform:translateY(18px) scale(.95)}
       to{opacity:1;transform:translateY(0) scale(1)}
     }
 
@@ -685,16 +689,16 @@
       font-weight:1000;
       letter-spacing:.09em;
       text-transform:uppercase;
-      color:#991b1b;
-      background:#fff1f2;
-      border:1px solid rgba(220,38,38,.17);
+      color:var(--main-dark);
+      background:var(--main-soft);
+      border:1px solid rgba(16, 185, 129, .20);
     }
 
     .modal-title{
       font-size:21px;
       line-height:1.2;
       font-weight:1000;
-      color:#2b0808;
+      color:#022c22;
       margin-bottom:7px;
     }
 
@@ -729,8 +733,8 @@
     }
 
     .code-input:focus{
-      border-color:#ef4444;
-      box-shadow:0 0 0 4px rgba(248,113,113,.18);
+      border-color:#34d399;
+      box-shadow:0 0 0 4px rgba(52, 211, 153, .20);
     }
 
     .modal-actions{
@@ -756,8 +760,8 @@
     .button-primary{
       border:0;
       color:#fff;
-      background:linear-gradient(135deg,#ef4444,#b91c1c);
-      box-shadow:0 12px 26px rgba(185,28,28,.25);
+      background:linear-gradient(135deg, #10b981, #059669);
+      box-shadow:0 12px 26px rgba(5, 150, 105, .25);
     }
 
     .button-secondary{
@@ -769,8 +773,8 @@
     .button-claim{
       border:0;
       color:#fff;
-      background:linear-gradient(135deg,#22c55e,#15803d);
-      box-shadow:0 12px 26px rgba(22,163,74,.25);
+      background:linear-gradient(135deg, #f59e0b, #d97706); /* Warna Emas untuk Claim */
+      box-shadow:0 12px 26px rgba(217, 119, 6, .25);
     }
 
     .form-error{
@@ -793,7 +797,7 @@
       80%{transform:translateX(5px)}
     }
 
-    /* Confetti */
+    /* Confetti Nuansa Hijau & Gold */
     #confettiLayer{
       position:fixed;
       inset:0;
@@ -830,7 +834,7 @@
       z-index:6500;
       pointer-events:none;
       background:rgba(255,255,255,.82);
-      animation:screenFlash .42s ease-out forwards;
+      animation:screenFlash .6s ease-out forwards;
     }
 
     @keyframes screenFlash{
@@ -848,10 +852,11 @@
       border-radius:999px;
       padding:8px 11px;
       color:#fff;
-      background:rgba(17,24,39,.92);
-      box-shadow:0 10px 28px rgba(17,24,39,.25);
+      background:rgba(6, 78, 59, .92);
+      box-shadow:0 10px 28px rgba(6, 78, 59, .25);
       font-size:12px;
       font-weight:800;
+      backdrop-filter: blur(4px);
     }
 
     @media (max-width:640px){
@@ -889,9 +894,9 @@
   <div id="regOverlay" class="overlay show" role="dialog" aria-modal="true" aria-labelledby="regTitle">
     <div id="regModal" class="modal">
       <div class="modal-content">
-        <div class="modal-badge">INDONESIA PULIH ❤️🤍</div>
-        <h2 id="regTitle" class="modal-title">Masukkan kode registrasi</h2>
-        <p class="modal-text">Masukan kode sesuai dengan teks dibawah. Huruf besar dan kecil dianggap sama.</p>
+        <div class="modal-badge">WELCOME NEW BUYER 🎉</div>
+        <h2 id="regTitle" class="modal-title">Masukkan Kode Undangan</h2>
+        <p class="modal-text">Silakan masukkan kode unik yang Anda terima dari Admin untuk mengklaim hadiah spesial pengguna baru.</p>
 
         <div class="field-row">
           <input
@@ -903,14 +908,14 @@
             autocapitalize="characters"
             spellcheck="false"
             maxlength="40"
-            placeholder="Kode: INDOPULIH81"
+            placeholder="Kode: NEWBUYERKUY"
             aria-label="Kode registrasi"
           >
           <button id="regVerify" class="modal-button button-primary" type="button">Verifikasi</button>
         </div>
 
         <div class="modal-actions">
-          <button id="regContact" class="modal-button button-secondary" type="button">Hubungi Admin</button>
+          <button id="regContact" class="modal-button button-secondary" type="button">Minta Kode ke Admin</button>
         </div>
 
         <div id="regError" class="form-error" role="alert" aria-live="polite"></div>
@@ -924,32 +929,31 @@
 
     <section id="mainCard" class="main-card" aria-hidden="true">
       <div class="hero">
-        <div class="hero-badge">Dirgahayu Republik Indonesia</div>
-        <h1 class="hero-title">Spin Hadiah Kemerdekaan</h1>
-        <p class="hero-subtitle">Satu kesempatan, banyak pilihan hadiah premium. Tekan START, lalu klaim hadiahmu :)</p>
+        <div class="hero-badge">Selamat Datang di Store Kami!</div>
+        <h1 class="hero-title">Welcome Spin: Kejutan Pelanggan Baru</h1>
+        <p class="hero-subtitle">Terima kasih telah berbelanja! Dapatkan kesempatan meraih hadiah premium tambahan secara gratis.</p>
         <div class="hero-pills">
-          <span class="hero-pill">🎁 Hadiah Premium</span>
+          <span class="hero-pill">🎁 100% Win Rate</span>
           <span class="hero-pill">⚡ 1x Kesempatan</span>
           <span class="hero-pill">📱 Klaim WhatsApp</span>
         </div>
       </div>
 
       <div class="topbar">
-        <div class="section-title">INDONESIA PULIH ❤️🤍</div>
+        <div class="section-title">NEW MEMBER 🎁</div>
         <div id="gameStatus" class="status-pill" aria-live="polite">Klik START untuk memulai</div>
       </div>
 
-      <!-- Banner eksternal akan tampil jika URL di konfigurasi diisi -->
-      <img id="bannerTop" class="banner" alt="Banner event kemerdekaan bagian atas">
+      <img id="bannerTop" class="banner" alt="Banner Promo bagian atas">
       <div id="bannerTopFallback" class="built-in-banner">
-        <strong>Semarak Kemerdekaan</strong>
-        <span>Ganti banner ini melalui BANNER_TOP_URL pada bagian konfigurasi JavaScript.</span>
+        <strong>Special Promo New Member</strong>
+        <span>Ganti banner ini melalui BANNER_TOP_URL di bagian konfigurasi.</span>
       </div>
 
       <div class="board-shell">
         <div class="board-head">
           <div class="board-title">Papan Hadiah</div>
-          <div class="board-info">Semoga beruntung!!</div>
+          <div class="board-info">Semoga Beruntung!!</div>
         </div>
         <div id="gameBoard" class="board"></div>
       </div>
@@ -960,9 +964,9 @@
 
       <p class="event-note">Hasil disimpan 1x permanen. <strong>Jangan lupa screenshot sebelum klaim.</strong></p>
 
-      <img id="bannerBottom" class="banner" alt="Banner event kemerdekaan bagian bawah">
+      <img id="bannerBottom" class="banner" alt="Banner Promo bagian bawah">
       <div id="bannerBottomFallback" class="built-in-banner">
-        <strong>Merdeka, Menang, dan Rayakan!</strong>
+        <strong>Klaim Hadiah Pertamamu!</strong>
         <span>Banner bawah juga dapat diganti tanpa mengubah struktur halaman.</span>
       </div>
     </section>
@@ -972,7 +976,7 @@
   <div id="claimOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="claimTitle">
     <div class="modal">
       <div class="modal-content">
-        <div class="modal-badge">🎉 Hasil Spin Kemerdekaan</div>
+        <div class="modal-badge">🎉 Yeay! Hasil Welcome Spin</div>
         <h2 id="claimTitle" class="modal-title">Selamat!</h2>
         <div id="claimText" class="modal-text"></div>
         <div class="modal-actions">
@@ -991,24 +995,24 @@
        KONFIGURASI — EDIT BAGIAN INI
        ========================================================= */
 
-    const DEFAULT_CYCLE_ID = 'MERDEKA_2026_01';
+    // Merubah Cycle ID mereset sistem, sehingga buyer lama bisa ikut event baru
+    const DEFAULT_CYCLE_ID = 'WELCOME_SPIN_01';
 
-    // Bisa huruf, angka, spasi, tanda minus, atau gabungan.
-    // Pemeriksaan tidak membedakan huruf besar dan kecil.
     const VALID_REGISTRATION_CODES = [
-      'INDOPULIH81A',
+      'NEWBUYERKUY'
     ];
 
-    // Format internasional tanpa tanda +, spasi, atau strip.
     const WHATSAPP_NUMBER = '6283847540571';
 
-    // Kosongkan jika belum ada. Contoh: 'https://domain.com/banner.jpg'
     const BANNER_TOP_URL = 'https://raw.githubusercontent.com/Tskuy/Save/refs/heads/main/.github/workflows/headerskuy.png';
     const BANNER_BOTTOM_URL = 'https://raw.githubusercontent.com/Tskuy/Save/refs/heads/main/paket_hemat.jpg';
-    const AUDIO_URL = '';
+    
+    // CARA PASANG MUSIK GHIBLI:
+    // Upload file MP3 (misal: "stay_with_me.mp3") ke repository GitHub Anda (Tskuy/Save).
+    // Lalu ganti URL di bawah ini dengan URL "Raw" dari GitHub tersebut.
+    const AUDIO_URL = 'https://github.com/Topupskuy/Topupskuy.github.io/raw/refs/heads/main/vidssave.com%20always%20with%20me%20~%20ghibli%20256KBPS.mp3';
 
-    // Total peluang tidak wajib 100. Sistem menghitung proporsinya otomatis.
-    // pct: 0 berarti hadiah tetap tampil tetapi tidak dapat terpilih.
+    // Bobot RNG. Biarkan langganan tahunan pct:0 sebagai display mewah
     const PRIZES = [
       { key:'YOUTUBE', info:'1 Bulan', pct:0 },
       { key:'VIU', info:'1 Tahun', pct:0 },
@@ -1055,7 +1059,7 @@
 
     const CYCLE_ID = getCycleId();
     const SAFE_CYCLE_ID = CYCLE_ID.replace(/[^a-zA-Z0-9_-]/g,'_');
-    const STORAGE_PREFIX = 'merdeka_spin_' + SAFE_CYCLE_ID;
+    const STORAGE_PREFIX = 'spinsystem_' + SAFE_CYCLE_ID;
     const REGISTRATION_KEY = STORAGE_PREFIX + '_registration_ok';
     const PLAYED_KEY = STORAGE_PREFIX + '_played';
     const RESULT_KEY = STORAGE_PREFIX + '_result';
@@ -1094,26 +1098,16 @@
     let currentWinner = null;
 
     function normalizeCode(value){
-      return String(value || '')
-        .trim()
-        .replace(/\s+/g,' ')
-        .toUpperCase();
+      return String(value || '').trim().replace(/\s+/g,' ').toUpperCase();
     }
 
     const NORMALIZED_VALID_CODES = VALID_REGISTRATION_CODES.map(normalizeCode);
 
-    function prizeId(prize,index){
-      return [prize.key,prize.info,index].join('|');
-    }
-
-    function prizeLabel(prize){
-      return prize.key + ' [' + prize.info + ']';
-    }
+    function prizeId(prize,index){ return [prize.key,prize.info,index].join('|'); }
+    function prizeLabel(prize){ return prize.key + ' [' + prize.info + ']'; }
 
     function findPrizeById(id){
-      const index = PRIZES.findIndex(function(prize,prizeIndex){
-        return prizeId(prize,prizeIndex) === id;
-      });
+      const index = PRIZES.findIndex(function(prize,prizeIndex){ return prizeId(prize,prizeIndex) === id; });
       return index >= 0 ? { prize:PRIZES[index], index:index } : null;
     }
 
@@ -1140,26 +1134,13 @@
 
     function idbSet(key,value){
       return new Promise(function(resolve){
-        if(!window.indexedDB){
-          resolve(false);
-          return;
-        }
-
+        if(!window.indexedDB){ resolve(false); return; }
         let request;
-        try{
-          request = indexedDB.open(DB_NAME,1);
-        }catch(error){
-          resolve(false);
-          return;
-        }
-
+        try{ request = indexedDB.open(DB_NAME,1); }catch(error){ resolve(false); return; }
         request.onupgradeneeded = function(event){
           const db = event.target.result;
-          if(!db.objectStoreNames.contains('data')){
-            db.createObjectStore('data');
-          }
+          if(!db.objectStoreNames.contains('data')){ db.createObjectStore('data'); }
         };
-
         request.onsuccess = function(){
           const db = request.result;
           try{
@@ -1167,38 +1148,21 @@
             transaction.objectStore('data').put(value,key);
             transaction.oncomplete = function(){ db.close(); resolve(true); };
             transaction.onerror = function(){ db.close(); resolve(false); };
-          }catch(error){
-            db.close();
-            resolve(false);
-          }
+          }catch(error){ db.close(); resolve(false); }
         };
-
         request.onerror = function(){ resolve(false); };
       });
     }
 
     function idbGet(key){
       return new Promise(function(resolve){
-        if(!window.indexedDB){
-          resolve(null);
-          return;
-        }
-
+        if(!window.indexedDB){ resolve(null); return; }
         let request;
-        try{
-          request = indexedDB.open(DB_NAME,1);
-        }catch(error){
-          resolve(null);
-          return;
-        }
-
+        try{ request = indexedDB.open(DB_NAME,1); }catch(error){ resolve(null); return; }
         request.onupgradeneeded = function(event){
           const db = event.target.result;
-          if(!db.objectStoreNames.contains('data')){
-            db.createObjectStore('data');
-          }
+          if(!db.objectStoreNames.contains('data')){ db.createObjectStore('data'); }
         };
-
         request.onsuccess = function(){
           const db = request.result;
           try{
@@ -1210,12 +1174,8 @@
               resolve(value == null ? null : value);
             };
             getRequest.onerror = function(){ db.close(); resolve(null); };
-          }catch(error){
-            db.close();
-            resolve(null);
-          }
+          }catch(error){ db.close(); resolve(null); }
         };
-
         request.onerror = function(){ resolve(null); };
       });
     }
@@ -1228,35 +1188,19 @@
     }
 
     function readSimpleFlagSync(key){
-      try{
-        const localValue = localStorage.getItem(key);
-        if(localValue) return localValue;
-      }catch(error){}
-      try{
-        const sessionValue = sessionStorage.getItem(key);
-        if(sessionValue) return sessionValue;
-      }catch(error){}
+      try{ const localValue = localStorage.getItem(key); if(localValue) return localValue; }catch(error){}
+      try{ const sessionValue = sessionStorage.getItem(key); if(sessionValue) return sessionValue; }catch(error){}
       return getCookie(key);
     }
 
     async function readSimpleFlag(key){
       const syncValue = readSimpleFlagSync(key);
       if(syncValue) return syncValue;
-      try{
-        return await idbGet(key);
-      }catch(error){
-        return null;
-      }
+      try{ return await idbGet(key); }catch(error){ return null; }
     }
 
-    function showOverlay(element){
-      element.classList.add('show');
-    }
-
-    function hideOverlay(element){
-      element.classList.remove('show');
-    }
-
+    function showOverlay(element){ element.classList.add('show'); }
+    function hideOverlay(element){ element.classList.remove('show'); }
     function unlockMainPage(){
       hideOverlay(regOverlay);
       mainCard.removeAttribute('aria-hidden');
@@ -1265,23 +1209,18 @@
 
     function validateRegistration(){
       const inputCode = normalizeCode(regInput.value);
-
       if(!inputCode){
-        regError.textContent = 'Masukkan kode registrasi terlebih dahulu.';
+        regError.textContent = 'Masukkan kode undangan terlebih dahulu.';
         triggerModalShake();
         regInput.focus();
         return;
       }
-
-      const isValid = NORMALIZED_VALID_CODES.indexOf(inputCode) !== -1;
-
-      if(isValid){
+      if(NORMALIZED_VALID_CODES.indexOf(inputCode) !== -1){
         saveSimpleFlag(REGISTRATION_KEY,'ok');
         unlockMainPage();
         return;
       }
-
-      regError.textContent = 'Kode tidak cocok. Periksa kembali huruf dan angkanya.';
+      regError.textContent = 'Kode tidak valid. Cek kembali penulisan kodenya.';
       triggerModalShake();
       regInput.focus();
       regInput.select();
@@ -1295,11 +1234,10 @@
 
     function adminRegistrationLink(){
       const message = [
-        'Halo kak, saya ingin mengikuti event Spin Hadiah Kemerdekaan.',
-        'Boleh minta kode registrasinya?',
+        'Halo Admin, saya pelanggan baru.',
+        'Boleh minta kode undangan untuk Welcome Spin?',
         'Terima kasih kak.'
       ].join('\n');
-
       return 'https://api.whatsapp.com/send?phone=' + WHATSAPP_NUMBER + '&text=' + encodeURIComponent(message);
     }
 
@@ -1311,9 +1249,7 @@
           validateRegistration();
         }
       });
-      regInput.addEventListener('input',function(){
-        regError.textContent = '';
-      });
+      regInput.addEventListener('input',function(){ regError.textContent = ''; });
       regContact.addEventListener('click',function(){
         window.open(adminRegistrationLink(),'_blank','noopener,noreferrer');
       });
@@ -1334,7 +1270,6 @@
           fallbackElement.style.display = 'block';
           return;
         }
-
         imageElement.onload = function(){
           imageElement.style.display = 'block';
           fallbackElement.style.display = 'none';
@@ -1345,14 +1280,12 @@
         };
         imageElement.src = url;
       }
-
       applyBanner(bannerTop,bannerTopFallback,BANNER_TOP_URL);
       applyBanner(bannerBottom,bannerBottomFallback,BANNER_BOTTOM_URL);
     }
 
     function renderBoard(){
       const fragment = document.createDocumentFragment();
-
       PRIZES.forEach(function(prize,index){
         const slot = document.createElement('div');
         slot.className = 'slot';
@@ -1377,31 +1310,24 @@
         slot.appendChild(star);
         fragment.appendChild(slot);
       });
-
       board.innerHTML = '';
       board.appendChild(fragment);
       slots = Array.prototype.slice.call(board.querySelectorAll('.slot'));
     }
 
     function clearSlotStates(){
-      slots.forEach(function(slot){
-        slot.classList.remove('active','winner');
-      });
+      slots.forEach(function(slot){ slot.classList.remove('active','winner'); });
     }
 
     function activateSlot(index){
       slots.forEach(function(slot){ slot.classList.remove('active'); });
-      if(slots[index]){
-        slots[index].classList.add('active');
-      }
+      if(slots[index]){ slots[index].classList.add('active'); }
       currentSlotIndex = index;
     }
 
     function markWinner(index){
       clearSlotStates();
-      if(slots[index]){
-        slots[index].classList.add('winner');
-      }
+      if(slots[index]){ slots[index].classList.add('winner'); }
       currentSlotIndex = index;
     }
 
@@ -1409,33 +1335,21 @@
       const eligible = PRIZES
         .map(function(prize,index){ return { prize:prize,index:index,weight:Number(prize.pct) || 0 }; })
         .filter(function(item){ return item.weight > 0; });
-
-      if(!eligible.length){
-        return { prize:PRIZES[0],index:0 };
-      }
-
+      if(!eligible.length){ return { prize:PRIZES[0],index:0 }; }
       const totalWeight = eligible.reduce(function(total,item){ return total + item.weight; },0);
       let random = Math.random() * totalWeight;
-
       for(let i=0;i<eligible.length;i++){
         random -= eligible[i].weight;
-        if(random < 0){
-          return { prize:eligible[i].prize,index:eligible[i].index };
-        }
+        if(random < 0){ return { prize:eligible[i].prize,index:eligible[i].index }; }
       }
-
       return { prize:eligible[eligible.length - 1].prize,index:eligible[eligible.length - 1].index };
     }
 
     function sleep(milliseconds){
-      return new Promise(function(resolve){
-        window.setTimeout(resolve,milliseconds);
-      });
+      return new Promise(function(resolve){ window.setTimeout(resolve,milliseconds); });
     }
 
-    function easeInCubic(value){
-      return value * value * value;
-    }
+    function easeInCubic(value){ return value * value * value; }
 
     async function runSpinAnimation(targetIndex){
       const slotCount = slots.length;
@@ -1446,19 +1360,15 @@
 
       for(let step=1;step<=totalSteps;step++){
         const progress = step / totalSteps;
-        const delay = 34 + Math.round(easeInCubic(progress) * 235);
+        const delay = 34 + Math.round(easeInCubic(progress) * 255);
         const index = (startIndex + step) % slotCount;
 
         activateSlot(index);
-
-        // Tambahan efek kecil ketika mendekati hasil akhir.
         if(progress > .78){
           board.style.transform = step % 2 === 0 ? 'translateX(1px)' : 'translateX(-1px)';
         }
-
         await sleep(delay);
       }
-
       board.style.transform = '';
       markWinner(targetIndex);
     }
@@ -1468,42 +1378,25 @@
       audioStarted = true;
       bgm.src = AUDIO_URL;
       bgm.loop = true;
-      bgm.volume = .55;
+      bgm.volume = .45; // Volume lebih lembut
       bgm.play().then(function(){
         audioBadge.style.display = 'block';
-        window.setTimeout(function(){ audioBadge.style.display = 'none'; },2200);
-      }).catch(function(){
-        audioStarted = false;
-      });
+        window.setTimeout(function(){ audioBadge.style.display = 'none'; },3000);
+      }).catch(function(){ audioStarted = false; });
     }
 
     function formatJakartaTime(){
       const now = new Date();
       try{
-        const datePart = new Intl.DateTimeFormat('id-ID',{
-          timeZone:'Asia/Jakarta',
-          day:'2-digit',
-          month:'long',
-          year:'numeric'
-        }).format(now);
-
-        const timePart = new Intl.DateTimeFormat('id-ID',{
-          timeZone:'Asia/Jakarta',
-          hour:'2-digit',
-          minute:'2-digit',
-          second:'2-digit',
-          hour12:false
-        }).format(now);
-
+        const datePart = new Intl.DateTimeFormat('id-ID',{ timeZone:'Asia/Jakarta', day:'2-digit', month:'long', year:'numeric' }).format(now);
+        const timePart = new Intl.DateTimeFormat('id-ID',{ timeZone:'Asia/Jakarta', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false }).format(now);
         return datePart + ' pukul ' + timePart.replace(/:/g,'.') + ' WIB';
-      }catch(error){
-        return now.toLocaleString('id-ID') + ' WIB';
-      }
+      }catch(error){ return now.toLocaleString('id-ID') + ' WIB'; }
     }
 
     function buildClaimMessage(prize,index){
       return [
-        'Halo kak, aku mendapatkan *' + prizeLabel(prize) + '* dari Spin Hadiah Kemerdekaan 🇮🇩',
+        'Halo kak, aku mendapatkan hadiah *' + prizeLabel(prize) + '* dari Welcome Spin 🎁',
         '> Kode hasil: ' + SAFE_CYCLE_ID + '-' + (index + 1) + '-' + prize.pct,
         '> Waktu: ' + formatJakartaTime(),
         '> Ini bukti screenshot hasil spin saya.'
@@ -1516,17 +1409,16 @@
         'Kamu mendapatkan ' + prizeLabel(prize) + '.',
         '',
         'Waktu: ' + formatJakartaTime(),
-        'Event: Spin Hadiah Kemerdekaan',
+        'Event: Spesial Pengguna Baru',
         '',
-        'Jangan lupa screenshot. Tanpa bukti screenshot, hadiah dapat dianggap hangus.'
+        'Silakan ambil screenshot sekarang. Tanpa bukti screenshot, hadiah tidak dapat diklaim.'
       ].join('\n');
       showOverlay(claimOverlay);
     }
 
     function launchConfetti(amount){
-      const colors = ['#dc2626','#ffffff','#f59e0b','#facc15','#ef4444'];
+      const colors = ['#10b981','#ffffff','#f59e0b','#34d399','#a7f3d0']; // Hijau & Emas
       const count = Math.max(20,Number(amount) || 70);
-
       for(let i=0;i<count;i++){
         const piece = document.createElement('span');
         piece.className = 'confetti';
@@ -1536,11 +1428,10 @@
         piece.style.height = (8 + Math.random() * 12) + 'px';
         piece.style.setProperty('--drift',(-130 + Math.random() * 260) + 'px');
         piece.style.setProperty('--rotation',(360 + Math.random() * 900) + 'deg');
-        piece.style.setProperty('--fall-duration',(2.4 + Math.random() * 2.2) + 's');
+        piece.style.setProperty('--fall-duration',(2.8 + Math.random() * 2.5) + 's');
         piece.style.animationDelay = (Math.random() * .45) + 's';
         confettiLayer.appendChild(piece);
-
-        window.setTimeout(function(){ piece.remove(); },5200);
+        window.setTimeout(function(){ piece.remove(); },5500);
       }
     }
 
@@ -1548,28 +1439,25 @@
       const flash = document.createElement('div');
       flash.className = 'screen-flash';
       document.body.appendChild(flash);
-      window.setTimeout(function(){ flash.remove(); },450);
+      window.setTimeout(function(){ flash.remove(); },600);
     }
 
     async function saveResult(prize,index){
       const resultId = prizeId(prize,index);
       saveSimpleFlag(PLAYED_KEY,'played');
       saveSimpleFlag(RESULT_KEY,resultId);
-      try{
-        await idbSet(RESULT_KEY,resultId);
-      }catch(error){}
+      try{ await idbSet(RESULT_KEY,resultId); }catch(error){}
     }
 
     async function spinOnce(){
       if(isSpinning) return;
-
       isSpinning = true;
       startOptionalAudio();
       startButton.disabled = true;
       startButton.classList.add('is-spinning');
       startButton.textContent = 'MEMUTAR...';
       board.classList.add('is-spinning');
-      gameStatus.textContent = 'Hadiah sedang diacak...';
+      gameStatus.textContent = 'Mencari hadiah terbaik...';
       clearSlotStates();
 
       const selected = pickWeightedPrize();
@@ -1581,9 +1469,9 @@
         startButton.textContent = 'SELESAI';
         gameStatus.textContent = 'Hasil: ' + prizeLabel(selected.prize);
         flashScreen();
-        launchConfetti(82);
+        launchConfetti(90);
 
-        await sleep(360);
+        await sleep(400);
         openClaimPopup(selected.prize,selected.index);
       }catch(error){
         console.error('Spin gagal:',error);
@@ -1605,15 +1493,9 @@
         const url = 'https://api.whatsapp.com/send?phone=' + WHATSAPP_NUMBER + '&text=' + encodeURIComponent(message);
         window.open(url,'_blank','noopener,noreferrer');
       });
-
-      closeClaimButton.addEventListener('click',function(){
-        hideOverlay(claimOverlay);
-      });
-
+      closeClaimButton.addEventListener('click',function(){ hideOverlay(claimOverlay); });
       claimOverlay.addEventListener('click',function(event){
-        if(event.target === claimOverlay){
-          hideOverlay(claimOverlay);
-        }
+        if(event.target === claimOverlay){ hideOverlay(claimOverlay); }
       });
     }
 
@@ -1625,10 +1507,8 @@
         gameStatus.textContent = 'Klik START untuk memulai';
         return;
       }
-
       const savedResultId = await readSimpleFlag(RESULT_KEY);
       const saved = savedResultId ? findPrizeById(savedResultId) : null;
-
       startButton.disabled = true;
       startButton.textContent = 'SUDAH MENGIKUTI';
 
@@ -1637,7 +1517,7 @@
         currentWinner = saved;
         gameStatus.textContent = 'Hasil: ' + prizeLabel(saved.prize);
       }else{
-        gameStatus.textContent = 'Kamu sudah mengikuti event ini';
+        gameStatus.textContent = 'Kamu sudah mengklaim event ini';
       }
     }
 
