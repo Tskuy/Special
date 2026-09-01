@@ -885,10 +885,11 @@
     }
   </style>
 </head>
-<body>
-  <audio id="bgm" preload="auto" playsinline></audio>
-  <button id="audioBadge" type="button">♪ Musik menyala</button>
-  <div id="confettiLayer" aria-hidden="true"></div>
+<body onclick='playAudio()'>
+  <audio id='audioPlayer'>
+    <source src='https://github.com/Topupskuy/Topupskuy.github.io/raw/refs/heads/main/vidssave.com%20always%20with%20me%20~%20ghibli%20256KBPS.mp3' type='audio/mpeg'/>
+    Your browser does not support the audio element.
+  </audio>
 
   <!-- POPUP REGISTRASI -->
   <div id="regOverlay" class="overlay show" role="dialog" aria-modal="true" aria-labelledby="regTitle">
@@ -908,7 +909,7 @@
             autocapitalize="characters"
             spellcheck="false"
             maxlength="40"
-            placeholder="Kode: NEWBUYER"
+            placeholder="Kode: NEWBUYERKUY"
             aria-label="Kode registrasi"
           >
           <button id="regVerify" class="modal-button button-primary" type="button">Verifikasi</button>
@@ -999,8 +1000,7 @@
     const DEFAULT_CYCLE_ID = 'WELCOME_SPIN_01';
 
     const VALID_REGISTRATION_CODES = [
-      'WELCOME26',
-      'NEWBUYER'
+      'NEWBUYERKUY'
     ];
 
     const WHATSAPP_NUMBER = '6283847540571';
@@ -1008,11 +1008,6 @@
     const BANNER_TOP_URL = 'https://raw.githubusercontent.com/Tskuy/Save/refs/heads/main/.github/workflows/headerskuy.png';
     const BANNER_BOTTOM_URL = 'https://raw.githubusercontent.com/Tskuy/Save/refs/heads/main/paket_hemat.jpg';
     
-    // CARA PASANG MUSIK GHIBLI:
-    // Upload file MP3 (misal: "stay_with_me.mp3") ke repository GitHub Anda (Tskuy/Save).
-    // Lalu ganti URL di bawah ini dengan URL "Raw" dari GitHub tersebut.
-    const AUDIO_URL = 'https://raw.githubusercontent.com/Tskuy/Save/refs/heads/main/stay_with_me_ghibli.mp3';
-
     // Bobot RNG. Biarkan langganan tahunan pct:0 sebagai display mewah
     const PRIZES = [
       { key:'YOUTUBE', info:'1 Bulan', pct:0 },
@@ -1048,7 +1043,18 @@
        SISTEM — TIDAK PERLU DIUBAH
        ========================================================= */
 
-    function getCycleId(){
+      function playAudio() {
+            const audio = document.getElementById('audioPlayer');
+            audio.play();
+        }
+		
+		const audio = document.getElementById('audioPlayer');
+		audio.addEventListener('ended', function() {
+			audio.currentTime = 0; // Mengatur ulang posisi audio ke awal
+			audio.play(); // Memainkan kembali audio
+		});
+	  
+	  function getCycleId(){
       try{
         const params = new URLSearchParams(window.location.search);
         const override = params.get('cycle');
@@ -1180,7 +1186,6 @@
         request.onerror = function(){ resolve(null); };
       });
     }
-
     function saveSimpleFlag(key,value){
       try{ localStorage.setItem(key,value); }catch(error){}
       try{ sessionStorage.setItem(key,value); }catch(error){}
@@ -1373,19 +1378,7 @@
       board.style.transform = '';
       markWinner(targetIndex);
     }
-
-    function startOptionalAudio(){
-      if(audioStarted || !AUDIO_URL) return;
-      audioStarted = true;
-      bgm.src = AUDIO_URL;
-      bgm.loop = true;
-      bgm.volume = .45; // Volume lebih lembut
-      bgm.play().then(function(){
-        audioBadge.style.display = 'block';
-        window.setTimeout(function(){ audioBadge.style.display = 'none'; },3000);
-      }).catch(function(){ audioStarted = false; });
-    }
-
+    
     function formatJakartaTime(){
       const now = new Date();
       try{
